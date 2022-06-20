@@ -1,0 +1,7 @@
+{
+  "name": "@agile-solid/website",
+  "version": "1.0.0",
+  "dependencies": {
+    "@agile-solid/components": "*"
+  }
+}

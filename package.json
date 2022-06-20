@@ -1,0 +1,42 @@
+{
+  "name": "@agile-solid/monorepo",
+  "private": true,
+  "author": "Huijie Wei <huijeiwei@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "workspaces": [
+    "packages/*",
+    "website"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.2",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huijiewei/agile-solid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/huijiewei/agile-solid/issues"
+  },
+  "homepage": "https://github.com/huijiewei/agile-solid#readme",
+  "lint-staged": {
+    "*.{js,jsx,cjs,mjs,ts,tsx}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,mdx}": "prettier --write"
+  }
+}

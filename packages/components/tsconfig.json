@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@agile-solid/utils": ["../utils/src"],
+      "@agile-solid/hooks": ["../hooks/src"],
+      "@agile-solid/test": ["../test/src"]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@agile-solid/components",
+  "version": "1.0.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huijiewei/agile-solid.git",
+    "directory": "packages/components"
+  },
+  "dependencies": {
+    "@agile-solid/hooks": "*",
+    "@agile-solid/utils": "*"
+  },
+  "devDependencies": {
+    "@agile-solid/test": "*"
+  }
+}

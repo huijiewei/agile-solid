@@ -1,0 +1,18 @@
+{
+  "name": "@agile-solid/test",
+  "version": "1.0.0",
+  "license": "MIT",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huijiewei/agile-solid.git",
+    "directory": "packages/test"
+  },
+  "dependencies": {
+    "jest": "^28.1.1",
+    "jest-axe": "^6.0.0"
+  }
+}
