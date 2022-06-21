@@ -24,6 +24,7 @@
 [![SolidJS](https://img.shields.io/badge/SolidJS-2c4f7c?style=flat&logo=solid&logoColor=white)](https://www.solidjs.com/)
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com)
+[![GitHub deployments](https://img.shields.io/github/deployments/huijiewei/agile-solid/production?label=vercel&logo=vercel)](https://agile-solid.vercel.app)
 [![GitHub license](https://img.shields.io/github/license/huijiewei/agile-solid)](https://github.com/huijiewei/agile-solid)
 [![GitHub issues](https://img.shields.io/github/issues/huijiewei/agile-solid)](https://GitHub.com/huijiewei/agile-solid/issues)
 
