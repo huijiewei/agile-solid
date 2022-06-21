@@ -3,16 +3,32 @@
   "version": "1.0.0",
   "license": "MIT",
   "sideEffects": false,
+  "type": "module",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "directory": "dist"
+  },
+  "scripts": {
+    "dts": "tsc src/index.ts --declaration --emitDeclarationOnly --skipLibCheck --target esnext --moduleResolution node --outDir dist",
+    "build": "vite build && npm run dts"
+  },
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huijiewei/agile-solid.git",
     "directory": "packages/test"
   },
+  "peerDependencies": {},
   "dependencies": {
-    "jest": "^28.1.1",
-    "jest-axe": "^6.0.0"
-  }
+    "solid-testing-library": "^0.3.0"
+  },
+  "devDependencies": {}
 }

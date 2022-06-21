@@ -4,7 +4,9 @@
   "author": "Huijie Wei <huijeiwei@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "vitest",
+    "build": "npm run build --workspaces --if-present"
   },
   "workspaces": [
     "packages/*",
@@ -19,14 +21,20 @@
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-solid": "^0.7.0",
+    "happy-dom": "^5.3.1",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.2",
     "prettier": "^2.7.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "vite": "^2.9.12",
+    "vite-plugin-solid": "^2.2.6",
+    "vite-tsconfig-paths": "^3.5.0",
+    "vitest": "^0.15.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/huijiewei/agile-solid.git"
+    "url": "git+https://github.com/huijiewei/agile-solid.git"
   },
   "bugs": {
     "url": "https://github.com/huijiewei/agile-solid/issues"
@@ -37,6 +45,6 @@
       "eslint --cache --fix",
       "prettier --write"
     ],
-    "*.{json,md,mdx}": "prettier --write"
+    "*.{json,md,mdx,html}": "prettier --write"
   }
 }

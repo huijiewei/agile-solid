@@ -1,8 +1,10 @@
 {
   "extends": "../tsconfig.base.json",
-  "include": ["src", "scripts"],
+  "include": ["src", "scripts", "vite.config.ts"],
   "compilerOptions": {
     "baseUrl": "./",
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
     "paths": {
       "@agile-solid/*": ["../packages/*/src"]
     }

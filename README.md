@@ -18,6 +18,7 @@
 [![ESLint](https://img.shields.io/badge/ESLint-3A33D1?style=flat&logo=eslint&logoColor=white)](https://eslint.org)
 [![Prettier](https://img.shields.io/badge/Prettier-1A2C34?style=flat&logo=prettier&logoColor=F7BA3E)](https://prettier.io)
 [![Jest](https://img.shields.io/badge/Jest-C21325?style=flat&logo=jest&logoColor=white)](https://jestjs.io/)
+[![Vite](https://img.shields.io/badge/Vite-747bff?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://typescriptlang.org)
 [![SolidJS](https://img.shields.io/badge/SolidJS-2c4f7c?style=flat&logo=solid&logoColor=white)](https://www.solidjs.com/)
