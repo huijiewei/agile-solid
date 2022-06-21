@@ -1,1 +1,2 @@
-export { fireEvent, screen, render } from 'solid-testing-library';
+export * from '@testing-library/dom';
+export * from './solid/render';

@@ -1,15 +1,12 @@
-import { render, screen } from '@agile-solid/test';
-import { describe, test, expect } from 'vitest';
+import { render } from '@agile-solid/test';
 import { VisuallyHidden } from './VisuallyHidden';
 
 describe('VisuallyHidden', () => {
   test('render', async () => {
-    const { baseElement, unmount } = render(() => <VisuallyHidden>Click me</VisuallyHidden>);
+    const { getByText, unmount } = render(() => <VisuallyHidden>Click me</VisuallyHidden>);
 
-    console.log(baseElement);
+    expect(getByText(/Click me/i)).toBeInTheDocument();
 
-    //expect(screen.getByText(/Click me/i)).toBeDefined();
-
-    //unmount();
+    unmount();
   });
 });

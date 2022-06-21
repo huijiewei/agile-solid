@@ -1,10 +1,10 @@
+import { resolve } from 'path';
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { visualizer } from 'rollup-plugin-visualizer';
 
 export default defineConfig({
-  plugins: [solidPlugin(), tsconfigPaths(), splitVendorChunkPlugin()],
+  plugins: [solidPlugin(), splitVendorChunkPlugin()],
   build: {
     rollupOptions: {
       plugins: [
@@ -16,5 +16,13 @@ export default defineConfig({
         }),
       ],
     },
+  },
+  resolve: {
+    alias: [
+      {
+        find: /^@agile-solid\/(.*)$/,
+        replacement: resolve(__dirname, '../packages/$1/src'),
+      },
+    ],
   },
 });
