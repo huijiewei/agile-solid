@@ -14,14 +14,15 @@
 [![Sourcetree](https://img.shields.io/badge/Sourcetree-0052CC?style=flat&logo=Sourcetree&logoColor=white)](https://sourcetreeapp.com)
 [![NPM](https://img.shields.io/badge/npm-CB3837?style=flat&logo=npm&logoColor=white)](https://www.npmjs.com/)
 
-[![Babel](https://img.shields.io/badge/Babel-F9DC3E?style=flat&logo=babel&logoColor=white)](https://babeljs.io/)
+[![Vite](https://img.shields.io/badge/Vite-747bff?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![ESLint](https://img.shields.io/badge/ESLint-3A33D1?style=flat&logo=eslint&logoColor=white)](https://eslint.org)
 [![Prettier](https://img.shields.io/badge/Prettier-1A2C34?style=flat&logo=prettier&logoColor=F7BA3E)](https://prettier.io)
 [![Jest](https://img.shields.io/badge/Jest-C21325?style=flat&logo=jest&logoColor=white)](https://jestjs.io/)
-[![Vite](https://img.shields.io/badge/Vite-747bff?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://typescriptlang.org)
 [![SolidJS](https://img.shields.io/badge/SolidJS-2c4f7c?style=flat&logo=solid&logoColor=white)](https://www.solidjs.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![Twind](https://img.shields.io/badge/Twind-3b9188?style=flat&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzYuOTkgMTYzLjQiIGNsYXNzPSIjMW4xc3Q4OSAjcGszY2Q3IiBhcmlhLWhpZGRlbj0idHJ1ZSI+PGNpcmNsZSBmaWxsPSIjZjVmNWY1IiBjeD0iOTUuMzEiIGN5PSI4MS42NyIgcj0iODEuNjciLz48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI2IiBkPSJNMTM5Ljc1IDMzLjQ4VjE2MC40Ii8+PGcgc3Ryb2tlPSIjMDAwIj48cGF0aCBmaWxsPSIjODBjYmM0IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZD0iTTIuNTcgODguOTJMOTEuNSAzNi44M3MxMy4zIDkuNzQgMTkuNiAyNS4xNGE3My4yMSA3My4yMSAwIDAgMSA1LjE3IDMwbC05Ny4yMSAzNC41OXMtMTAuNzctNy45My0xNC0xNS40My0yLjQ5LTIyLjIxLTIuNDktMjIuMjF6Ii8+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNMTE0LjM2IDc3LjE1bDI2LjA2LTMyLjM5TTEwMi42MyA0Ny40NWwzNy45NC0yLjAxIi8+PHBhdGggc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSIjZWU5OTljIiBkPSJNNDYuMjMgMTE2Ljc2bC0xOC44LTQyLjM5IDE0LTguMjkgMTkuMTIgNDUuMjZ6Ii8+PHBhdGggc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSIjZWU5OTljIiBkPSJNNjEuMjcgMTExLjc2TDQxLjQzIDY3LjAybDE0LjgtOC43NSAyMC4yIDQ3Ljc3eiIvPjwvZz48L3N2Zz4=&logoColor=white)](https://twind.style)
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com)
 [![GitHub deployments](https://img.shields.io/github/deployments/huijiewei/agile-solid/production?label=vercel&logo=vercel)](https://agile-solid.vercel.app)

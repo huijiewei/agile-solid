@@ -8,8 +8,14 @@
   },
   "dependencies": {
     "@agile-solid/components": "*",
+    "@agile-solid/twind": "*",
+    "@agile-solid/icons": "*",
+    "@twind/preset-autoprefix": "next",
+    "@twind/preset-ext": "next",
+    "@twind/preset-tailwind": "next",
     "solid-app-router": "^0.4.1",
-    "solid-js": "^1.4.4"
+    "solid-js": "^1.4.4",
+    "twind": "next"
   },
   "devDependencies": {
     "rollup-plugin-visualizer": "^5.6.0"

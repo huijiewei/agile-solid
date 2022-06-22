@@ -33,21 +33,21 @@ type CreateIconOptions = {
 };
 
 export const createIcon = (options: CreateIconOptions) => {
-  const {
-    viewBox,
-    d,
-    defaultProps = {
-      stroke: 'currentColor',
-      'stroke-width': 2,
-      'stroke-linecap': 'round',
-      'stroke-linejoin': 'round',
-    },
-    path,
-  } = options;
+  const { viewBox, d, defaultProps, path } = options;
+
+  const iconProps: IconProps = {
+    stroke: 'currentColor',
+    'stroke-width': 2,
+    'stroke-linecap': 'round',
+    'stroke-linejoin': 'round',
+    ...defaultProps,
+  };
+
+  console.log(1);
 
   return (props: IconProps) => {
     return (
-      <Icon viewBox={viewBox} {...defaultProps} {...props}>
+      <Icon viewBox={viewBox} {...iconProps} {...props}>
         {path ? path : <path fill="currentColor" d={d} />}
       </Icon>
     );

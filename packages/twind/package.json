@@ -1,15 +1,14 @@
 {
-  "name": "@agile-solid/components",
+  "name": "@agile-solid/twind",
   "version": "1.0.0",
   "license": "MIT",
   "sideEffects": false,
-  "type": "module",
   "publishConfig": {
     "access": "public",
     "directory": "dist"
   },
   "scripts": {
-    "dts": "tsc src/index.ts --declaration --emitDeclarationOnly --jsx preserve --jsxImportSource solid-js --skipLibCheck --target esnext --moduleResolution node --outDir dist",
+    "dts": "tsc src/index.ts --allowJS --allowSyntheticDefaultImports --declaration --emitDeclarationOnly --skipLibCheck --target esnext --moduleResolution node --outDir dist",
     "build": "vite build && npm run dts"
   },
   "main": "./dist/index.cjs.js",
@@ -19,23 +18,22 @@
     ".": {
       "import": "./dist/index.es.js",
       "require": "./dist/index.cjs.js"
-    }
+    },
+    "./tailwind.config": "./tailwind.config.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huijiewei/agile-solid.git",
-    "directory": "packages/components"
+    "directory": "packages/twind"
   },
   "peerDependencies": {
-    "@agile-solid/twind": "*",
-    "solid-js": ">=1",
-    "twind": "next"
+    "twind": "next",
+    "@twind/preset-autoprefix": "next",
+    "@twind/preset-tailwind": "next",
+    "@twind/preset-ext": "next"
   },
   "dependencies": {
-    "@agile-solid/hooks": "*",
     "@agile-solid/utils": "*"
   },
-  "devDependencies": {
-    "@agile-solid/test": "*"
-  }
+  "devDependencies": {}
 }

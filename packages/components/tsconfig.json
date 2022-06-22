@@ -8,6 +8,7 @@
     "paths": {
       "@agile-solid/utils": ["../utils/src"],
       "@agile-solid/hooks": ["../hooks/src"],
+      "@agile-solid/twind": ["../twind/src"],
       "@agile-solid/test": ["../test/src"]
     }
   }

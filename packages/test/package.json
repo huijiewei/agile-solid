@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "@testing-library/dom": "^8.14.0",
-    "@testing-library/jest-dom": "^5.16.4"
+    "@testing-library/jest-dom": "^5.16.4",
+    "twind": "next"
   },
   "devDependencies": {}
 }
