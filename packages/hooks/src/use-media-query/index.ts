@@ -1,7 +1,8 @@
+import { isBrowser } from '@agile-solid/utils';
 import { createEffect, createSignal, onCleanup } from 'solid-js';
 
 export const useMediaQuery = (query: string) => {
-  if (typeof window === 'undefined') {
+  if (!isBrowser()) {
     return () => false;
   }
 
