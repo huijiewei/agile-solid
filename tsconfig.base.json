@@ -26,7 +26,6 @@
     "target": "esnext",
 
     // Completeness
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true
+    "skipLibCheck": true
   }
 }

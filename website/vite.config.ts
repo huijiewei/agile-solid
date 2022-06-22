@@ -11,6 +11,13 @@ export default defineConfig(({ mode }) => {
     plugins: [
       solidPlugin(),
       splitVendorChunkPlugin(),
+      env['BUNDLE_ANALYZE'] == '1' &&
+        visualizer({
+          open: true,
+          filename: './node_modules/.cache/visualizer/stats.html',
+          gzipSize: true,
+          brotliSize: true,
+        }),
       VitePWA({
         includeAssets: ['favicon.svg'],
         registerType: 'autoUpdate',
@@ -28,7 +35,7 @@ export default defineConfig(({ mode }) => {
           display: 'standalone',
         },
       }),
-    ],
+    ].filter(Boolean),
     optimizeDeps: {
       include: ['@agile-solid/twind'],
     },
@@ -37,22 +44,17 @@ export default defineConfig(({ mode }) => {
         include: /packages\/twind/,
       },
       rollupOptions: {
-        plugins: [
-          env['BUNDLE_ANALYZE'] == '1' &&
-            visualizer({
-              open: true,
-              filename: './node_modules/.cache/visualizer/stats.html',
-              gzipSize: true,
-              brotliSize: true,
-            }),
-        ],
         output: {
           manualChunks: (id) => {
             if (id.includes('node_modules/solid-js') || id.includes('node_modules/solid-app-router')) {
               return 'solid';
             }
 
-            if (id.includes('node_modules/twind') || id.includes('node_modules/@twind')) {
+            if (
+              id.includes('node_modules/twind') ||
+              id.includes('node_modules/@twind') ||
+              id.includes('node_modules/style-vendorizer')
+            ) {
               return 'twind';
             }
 
