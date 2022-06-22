@@ -6,8 +6,7 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "paths": {
-      "@agile-solid/utils": ["../utils/src"],
-      "@agile-solid/test": ["../test/src"]
+      "@agile-solid/utils": ["../utils/src"]
     }
   }
 }

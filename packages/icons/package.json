@@ -32,7 +32,5 @@
   "dependencies": {
     "@agile-solid/utils": "*"
   },
-  "devDependencies": {
-    "@agile-solid/test": "*"
-  }
+  "devDependencies": {}
 }
