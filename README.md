@@ -1,6 +1,8 @@
+<p>
+  <img src="./banner.png" alt="Agile Solid UI" />
+</p>
+
 <div align="center">
-<p><img src="./website/src/assets/images/logo.svg" alt="SolidJS + TypeScript UI Components." width="36"></p>
-<h1>Agile Solid</h1>
 <p>SolidJS + TypeScript UI Components</p>
 
 [![Intel](https://img.shields.io/badge/Intel-Core_i5_9600K-0071C5?style=flat&logo=intel&logoColor=white)](https://www.intel.com/content/www/us/en/products/sku/134896/intel-core-i59600k-processor-9m-cache-up-to-4-60-ghz/specifications.html)

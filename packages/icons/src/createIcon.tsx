@@ -43,8 +43,6 @@ export const createIcon = (options: CreateIconOptions) => {
     ...defaultProps,
   };
 
-  console.log(1);
-
   return (props: IconProps) => {
     return (
       <Icon viewBox={viewBox} {...iconProps} {...props}>
