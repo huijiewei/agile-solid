@@ -1,3 +1,4 @@
+import { Button } from '@agile-solid/components';
 import { useNavigate } from 'solid-app-router';
 import type { JSX } from 'solid-js';
 
@@ -19,14 +20,9 @@ export const Error = (props: ErrorProps) => {
       <h1 class={'text-xl'}>{props.title}</h1>
       {props.children && <div class={'mx-auto mt-5 w-fit'}>{props.children}</div>}
       <div class={'mt-5'}>
-        <button
-          class={
-            'text-blue-600 appearance-none h-8 inline-flex w-auto bg-white px-3 transition-colors align-middle border border-current duration-300 items-center justify-center select-none whitespace-nowrap rounded hover:bg-blue-50 active:bg-blue-100 dark:bg-black'
-          }
-          onClick={handleBack}
-        >
+        <Button variant={'outline'} onClick={handleBack}>
           返回
-        </button>
+        </Button>
       </div>
     </div>
   );
