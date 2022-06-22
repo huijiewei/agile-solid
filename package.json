@@ -6,7 +6,9 @@
   "scripts": {
     "prepare": "husky install",
     "test": "jest",
-    "build": "npm run build --workspaces --if-present"
+    "dev": "npm run dev -w @agile-solid/website",
+    "build": "npm run build -w @agile-solid/website",
+    "preview": "npm run preview -w @agile-solid/website"
   },
   "workspaces": [
     "packages/*",

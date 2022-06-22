@@ -1,9 +1,24 @@
 import { Navigate, Route, Routes } from 'solid-app-router';
+import { createEffect, onCleanup } from 'solid-js';
 import { DefaultLayout } from './layouts/DefaultLayout';
 import Home from './views/site/Home';
 import NotFound from './views/site/NotFound';
 
 const App = () => {
+  createEffect(() => {
+    const splash = document.getElementById('index-splash');
+
+    const handleChange = () => {
+      splash?.remove();
+    };
+
+    splash?.addEventListener('animationend', handleChange);
+
+    onCleanup(() => {
+      splash?.removeEventListener('animationend', handleChange);
+    });
+  });
+
   return (
     <Routes>
       <Route path="/" element={<DefaultLayout />}>

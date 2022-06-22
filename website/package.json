@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "@agile-solid/components": "*",
-    "@agile-solid/twind": "*",
     "@agile-solid/icons": "*",
+    "@agile-solid/twind": "*",
     "@twind/preset-autoprefix": "next",
     "@twind/preset-ext": "next",
     "@twind/preset-tailwind": "next",
@@ -18,6 +18,7 @@
     "twind": "next"
   },
   "devDependencies": {
-    "rollup-plugin-visualizer": "^5.6.0"
+    "rollup-plugin-visualizer": "^5.6.0",
+    "vite-plugin-pwa": "^0.12.0"
   }
 }

@@ -3,7 +3,8 @@ import { Moon, Sun } from '@agile-solid/icons';
 import { createEffect } from 'solid-js';
 
 export const ThemeSwitcher = () => {
-  const [darkMode, setDarkMode] = useLocalStorage('ag:dark-mode', useMediaQuery('(prefers-color-scheme: dark)'));
+  const osDark = useMediaQuery('(prefers-color-scheme: dark)');
+  const [darkMode, setDarkMode] = useLocalStorage('ag:dark-mode', osDark());
 
   createEffect(() => {
     if (darkMode()) {
@@ -15,6 +16,7 @@ export const ThemeSwitcher = () => {
 
   return (
     <button
+      aria-label={darkMode() ? '黑暗模式' : '亮色模式'}
       onClick={() => setDarkMode((prev) => !prev)}
       class={'block border-slate-300 rounded select-none p-1 border text-slate-500 hover:text-slate-700'}
     >
