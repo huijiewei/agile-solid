@@ -33,7 +33,7 @@ export type ButtonGroupProps = ButtonBaseProps & {
   vertical?: boolean;
 };
 
-export const ButtonGroupContext = createContext<ButtonGroupProps>();
+const ButtonGroupContext = createContext<ButtonGroupProps>();
 
 export const useButtonGroup = () => useContext(ButtonGroupContext);
 

@@ -1,7 +1,5 @@
 import type { Merge } from '@agile-solid/utils';
-import type { JSX } from 'solid-js';
-import type { Component } from 'solid-js/types/render/component';
-import type { ComponentProps } from 'solid-js/types/render/component';
+import type { JSX, Component, ComponentProps } from 'solid-js';
 
 export type PrimitiveComponentProps<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

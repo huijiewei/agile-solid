@@ -1,18 +1,8 @@
-import { useLocalStorage, useMediaQuery } from '@agile-solid/hooks';
+import { useDarkMode } from '@agile-solid/components';
 import { Moon, Sun } from '@agile-solid/icons';
-import { createEffect } from 'solid-js';
 
 export const ThemeSwitcher = () => {
-  const osDark = useMediaQuery('(prefers-color-scheme: dark)');
-  const [darkMode, setDarkMode] = useLocalStorage('ag:dark-mode', osDark());
-
-  createEffect(() => {
-    if (darkMode()) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  });
+  const { darkMode, setDarkMode } = useDarkMode();
 
   return (
     <button

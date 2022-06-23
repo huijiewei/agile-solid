@@ -1,4 +1,5 @@
 // @refresh reload
+import { ThemeProvider } from '@agile-solid/components';
 import presetAgile from '@agile-solid/twind';
 import presetAutoprefix from '@twind/preset-autoprefix';
 import presetExt from '@twind/preset-ext';
@@ -31,9 +32,11 @@ useRegisterSW();
 
 render(
   () => (
-    <Router>
-      <App />
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <App />
+      </Router>
+    </ThemeProvider>
   ),
   document.getElementById('app') as HTMLElement
 );

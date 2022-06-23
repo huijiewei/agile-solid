@@ -2,10 +2,7 @@ import { isFunction } from '@agile-solid/utils';
 import type { Accessor, Setter } from 'solid-js';
 import { createEffect, createSignal, onCleanup } from 'solid-js';
 
-export const useLocalStorage = <T>(
-  key: string,
-  initialValue: (() => T) | T
-): [Accessor<T | undefined>, Setter<T | undefined>] => {
+export const useLocalStorage = <T>(key: string, initialValue: (() => T) | T): [Accessor<T>, Setter<T>] => {
   const getStoredValue = () => {
     try {
       const item = localStorage.getItem(key);
@@ -20,7 +17,7 @@ export const useLocalStorage = <T>(
     return isFunction(initialValue) ? initialValue() : initialValue;
   };
 
-  const [state, setState] = createSignal<T | undefined>(getStoredValue());
+  const [state, setState] = createSignal<T>(getStoredValue());
 
   createEffect(() => {
     const item = state();
