@@ -1,14 +1,12 @@
-import { splitProps } from 'solid-js';
+import { mergeProps, splitProps } from 'solid-js';
 import type { JSX } from 'solid-js';
-import { Dynamic } from 'solid-js/web';
 import { tx } from 'twind';
-import type { PrimitiveComponentProps, ValidConstructor } from '../utils/component';
+import type { PrimitiveComponentProps } from '../utils/component';
 import { useButtonGroup } from './ButtonGroup';
 import type { ButtonBaseProps } from './ButtonGroup';
 import { ButtonLoader } from './ButtonLoader';
 
-export type ButtonProps<T extends ValidConstructor = 'button'> = ButtonBaseProps & {
-  as?: T;
+export type ButtonProps = ButtonBaseProps & {
   /**
    * 类型
    * @default 'button'
@@ -92,7 +90,22 @@ const buttonVariants = (color: string, disabled: boolean, active: boolean, group
 };
 
 export const Button = (props: PrimitiveComponentProps<'button', ButtonProps>) => {
-  const [local, rest] = splitProps(props, [
+  const group = useButtonGroup();
+
+  const defaultProps = {
+    size: group?.size || 'md',
+    color: group?.color || 'blue',
+    variant: group?.variant || 'solid',
+    active: false,
+    disabled: group?.disabled || false,
+    loading: false,
+    fullWidth: false,
+    loaderPlacement: 'start',
+  };
+
+  const propsWithDefault = mergeProps(defaultProps, props);
+
+  const [local, rest] = splitProps(propsWithDefault, [
     'type',
     'size',
     'color',
@@ -106,14 +119,10 @@ export const Button = (props: PrimitiveComponentProps<'button', ButtonProps>) =>
     'loadingText',
     'loader',
     'loaderPlacement',
-    'as',
   ]);
 
-  const group = useButtonGroup();
-
   return (
-    <Dynamic
-      component={local.as || 'button'}
+    <button
       type={local.type}
       class={tx(
         'inline-flex select-none appearance-none items-center justify-center whitespace-nowrap border align-middle duration-300 transition-colors',
@@ -124,11 +133,11 @@ export const Button = (props: PrimitiveComponentProps<'button', ButtonProps>) =>
           : 'rounded',
         local.fullWidth ? 'w-full' : 'w-auto',
         (local.disabled || local.loading) && 'cursor-not-allowed opacity-60',
-        buttonSizes[local.size || 'md'],
+        buttonSizes[local.size],
         buttonVariants(
-          local.color || 'blue',
-          local.disabled || local.loading || false,
-          local.active || false,
+          local.color,
+          local.disabled || local.loading,
+          local.active,
           group && { vertical: group.vertical || false }
         )[local.variant || 'solid'],
         local.class
@@ -136,17 +145,17 @@ export const Button = (props: PrimitiveComponentProps<'button', ButtonProps>) =>
       disabled={local.disabled || local.loading}
       {...rest}
     >
-      {local.loading && local.loaderPlacement != 'end' && (
-        <ButtonLoader size={local.size || 'md'} label={local.loadingText} placement="start">
+      {local.loading && local.loaderPlacement == 'start' && (
+        <ButtonLoader size={local.size} label={local.loadingText} placement="start">
           {local.loader}
         </ButtonLoader>
       )}
       {local.loading ? local.loadingText || <span class={'opacity-0'}>{local.children}</span> : local.children}
       {local.loading && local.loaderPlacement == 'end' && (
-        <ButtonLoader size={local.size || 'md'} label={local.loadingText} placement="end">
+        <ButtonLoader size={local.size} label={local.loadingText} placement="end">
           {local.loader}
         </ButtonLoader>
       )}
-    </Dynamic>
+    </button>
   );
 };

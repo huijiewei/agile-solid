@@ -10,7 +10,7 @@ export type ButtonLoaderProps = {
   placement?: 'start' | 'end';
 };
 
-const LoaderSizes: Record<string, Size> = {
+const loaderSizes: Record<string, Size> = {
   xs: 'xs',
   sm: 'sm',
   md: 'sm',
@@ -31,7 +31,7 @@ export const ButtonLoader = (props: PrimitiveComponentProps<'span', ButtonLoader
       )}
       {...rest}
     >
-      {local.children || <Loader size={LoaderSizes[local.size]} />}
+      {local.children || <Loader size={loaderSizes[local.size]} />}
     </span>
   );
 };
