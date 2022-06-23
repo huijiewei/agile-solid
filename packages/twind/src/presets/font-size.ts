@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   xs: ['0.50rem', '1rem'],
   sm: ['0.75rem', '1.25rem'],
   base: ['0.875rem', '1.5rem'],

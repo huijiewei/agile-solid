@@ -3,7 +3,6 @@
   "include": ["src", "vite.config.ts"],
   "compilerOptions": {
     "baseUrl": "./",
-    "allowSyntheticDefaultImports": true,
     "paths": {
       "@agile-solid/utils": ["../utils/src"]
     }

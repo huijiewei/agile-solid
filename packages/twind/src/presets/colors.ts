@@ -1,4 +1,4 @@
-const {
+import {
   inherit,
   current,
   transparent,
@@ -14,9 +14,9 @@ const {
   rose,
   yellow,
   orange,
-} = require('@twind/preset-tailwind/colors');
+} from '@twind/preset-tailwind/colors';
 
-module.exports = {
+export default {
   inherit,
   current,
   transparent,

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   thin: '200',
   light: '300',
   normal: '400',

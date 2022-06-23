@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   none: '0',
   xs: '1px',
   sm: '2px',

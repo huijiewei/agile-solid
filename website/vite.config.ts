@@ -25,13 +25,7 @@ export default defineConfig({
       },
     }),
   ],
-  optimizeDeps: {
-    include: ['@agile-solid/twind'],
-  },
   build: {
-    commonjsOptions: {
-      include: /packages\/twind/,
-    },
     rollupOptions: {
       output: {
         manualChunks: (id) => {

@@ -11,9 +11,6 @@ export default defineConfig({
       name: pkg.name,
       fileName: 'index',
     },
-    commonjsOptions: {
-      include: /presets/,
-    },
     rollupOptions: {
       external: [...Object.keys(pkg.peerDependencies)],
     },
