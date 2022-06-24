@@ -8,16 +8,23 @@ export default defineConfig({
     solidPlugin(),
     splitVendorChunkPlugin(),
     VitePWA({
-      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'safari-pinned-tab.svg'],
       registerType: 'autoUpdate',
       manifest: {
         name: 'Agile Solid UI',
         description: 'SolidJS + TypeScript UI Components',
         short_name: 'agile-solid',
         start_url: '/home',
+        lang: 'zh',
         icons: [
-          { src: 'icons/android-chrome-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
-          { src: 'icons/android-chrome-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          { src: 'icons/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'icons/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+          {
+            src: 'icons/icon_light.svg',
+            sizes: '155x155',
+            type: 'image/svg',
+            purpose: 'any maskable',
+          },
         ],
         theme_color: '#206BC4',
         background_color: '#FFFFFF',
