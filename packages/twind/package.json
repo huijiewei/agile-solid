@@ -35,5 +35,8 @@
   "dependencies": {
     "@agile-solid/utils": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "twind": "next",
+    "@twind/preset-tailwind": "next"
+  }
 }

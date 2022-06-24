@@ -1,7 +1,9 @@
-import { mergeProps, splitProps } from 'solid-js';
+import { mergeRefs } from '@agile-solid/utils';
+import { mergeProps, Show, splitProps } from 'solid-js';
 import type { JSX } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
 import { tx } from 'twind';
-import type { PrimitiveComponentProps } from '../utils/component';
+import type { PolymorphicComponentProps } from '../utils/component';
 import { useButtonGroup } from './ButtonGroup';
 import type { ButtonBaseProps } from './ButtonGroup';
 import { ButtonLoader } from './ButtonLoader';
@@ -89,10 +91,11 @@ const buttonVariants = (color: string, disabled: boolean, active: boolean, group
   };
 };
 
-export const Button = (props: PrimitiveComponentProps<'button', ButtonProps>) => {
+export const Button = (props: PolymorphicComponentProps<'button', ButtonProps>) => {
   const group = useButtonGroup();
 
   const defaultProps = {
+    as: 'button',
     size: group?.size || 'md',
     color: group?.color || 'blue',
     variant: group?.variant || 'solid',
@@ -106,6 +109,7 @@ export const Button = (props: PrimitiveComponentProps<'button', ButtonProps>) =>
   const propsWithDefault = mergeProps(defaultProps, props);
 
   const [local, rest] = splitProps(propsWithDefault, [
+    'as',
     'type',
     'size',
     'color',
@@ -122,7 +126,8 @@ export const Button = (props: PrimitiveComponentProps<'button', ButtonProps>) =>
   ]);
 
   return (
-    <button
+    <Dynamic
+      component={local.as}
       type={local.type}
       class={tx(
         'inline-flex select-none appearance-none items-center justify-center whitespace-nowrap border align-middle duration-300 transition-colors',
@@ -145,17 +150,21 @@ export const Button = (props: PrimitiveComponentProps<'button', ButtonProps>) =>
       disabled={local.disabled || local.loading}
       {...rest}
     >
-      {local.loading && local.loaderPlacement == 'start' && (
+      <Show when={local.loading && local.loaderPlacement == 'start'}>
         <ButtonLoader size={local.size} label={local.loadingText} placement="start">
           {local.loader}
         </ButtonLoader>
-      )}
-      {local.loading ? local.loadingText || <span class={'opacity-0'}>{local.children}</span> : local.children}
-      {local.loading && local.loaderPlacement == 'end' && (
+      </Show>
+      <Show when={local.loading} fallback={local.children}>
+        <Show fallback={<span class={'opacity-0'}>{local.children}</span>} when={local.loadingText}>
+          {local.loadingText}
+        </Show>
+      </Show>
+      <Show when={local.loading && local.loaderPlacement == 'end'}>
         <ButtonLoader size={local.size} label={local.loadingText} placement="end">
           {local.loader}
         </ButtonLoader>
-      )}
-    </button>
+      </Show>
+    </Dynamic>
   );
 };

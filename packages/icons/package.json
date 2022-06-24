@@ -32,5 +32,7 @@
   "dependencies": {
     "@agile-solid/utils": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "solid-js": "^1.4.4"
+  }
 }

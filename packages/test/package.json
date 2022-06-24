@@ -34,5 +34,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "twind": "next"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "solid-js": "^1.4.4"
+  }
 }

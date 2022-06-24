@@ -1,4 +1,4 @@
-import { VisuallyHidden } from '@agile-solid/components';
+import { Tooltip, VisuallyHidden } from '@agile-solid/components';
 import { Github } from '@agile-solid/icons';
 import LogoImage from '../assets/images/logo.svg';
 import { ThemeSwitcher } from '../components/theme-switcher/ThemeSwicher';
@@ -26,15 +26,17 @@ export const LayoutHeader = () => {
         </div>
         <div class={'flex flex-row items-center gap-2'}>
           <ThemeSwitcher />
-          <a
-            class={'block border-slate-300 rounded p-1 border text-slate-500 select-none hover:text-slate-700'}
-            rel="noreferrer"
-            href="https://github.com/huijiewei/agile-solid"
-            target="_blank"
-          >
-            <VisuallyHidden>Github 上的 Agile UI</VisuallyHidden>
-            <Github class={'h-5 w-5'} />
-          </a>
+          <Tooltip placement={'bottom'} content={'Github 上的 Agile UI'}>
+            <a
+              class={'block border-slate-300 rounded p-1 border text-slate-500 select-none hover:text-slate-700'}
+              rel="noreferrer"
+              href="https://github.com/huijiewei/agile-solid"
+              target="_blank"
+            >
+              <VisuallyHidden>Github 上的 Agile UI</VisuallyHidden>
+              <Github class={'h-5 w-5'} />
+            </a>
+          </Tooltip>
         </div>
       </div>
     </header>

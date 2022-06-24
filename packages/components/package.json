@@ -33,9 +33,13 @@
   },
   "dependencies": {
     "@agile-solid/hooks": "*",
-    "@agile-solid/utils": "*"
+    "@agile-solid/utils": "*",
+    "@floating-ui/dom": "^0.5.4"
   },
   "devDependencies": {
-    "@agile-solid/test": "*"
+    "@agile-solid/test": "*",
+    "@agile-solid/twind": "*",
+    "twind": "next",
+    "solid-js": "^1.4.4"
   }
 }
