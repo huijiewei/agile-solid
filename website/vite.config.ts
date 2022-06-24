@@ -8,7 +8,7 @@ export default defineConfig({
     solidPlugin(),
     splitVendorChunkPlugin(),
     VitePWA({
-      includeAssets: ['favicon.svg'],
+      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       registerType: 'autoUpdate',
       manifest: {
         name: 'Agile Solid UI',
