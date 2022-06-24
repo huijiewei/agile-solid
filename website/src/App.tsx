@@ -1,23 +1,19 @@
+import { useEventListener } from '@agile-solid/hooks';
 import { Navigate, Route, Routes } from 'solid-app-router';
-import { createEffect, onCleanup } from 'solid-js';
 import { DefaultLayout } from './layouts/DefaultLayout';
 import Home from './views/site/Home';
 import NotFound from './views/site/NotFound';
 
 const App = () => {
-  createEffect(() => {
-    const splash = document.getElementById('index-splash');
+  const splash = document.getElementById('index-splash');
 
-    const handleChange = () => {
+  useEventListener(
+    'animationend',
+    () => {
       splash?.remove();
-    };
-
-    splash?.addEventListener('animationend', handleChange);
-
-    onCleanup(() => {
-      splash?.removeEventListener('animationend', handleChange);
-    });
-  });
+    },
+    { target: splash }
+  );
 
   return (
     <Routes>
