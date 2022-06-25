@@ -10,7 +10,7 @@ export const routes = [
     children: [
       { path: '/', component: () => <Navigate href={'home'} /> },
       { path: '/home', component: () => <Home /> },
-      { path: '/*', title: '页面不存在', component: () => <NotFound /> },
+      { path: '/*', component: () => <NotFound /> },
     ],
   },
 ];
