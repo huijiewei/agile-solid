@@ -7,6 +7,7 @@
     "jsxImportSource": "solid-js",
     "paths": {
       "@agile-solid/*": ["../packages/*/src"]
-    }
+    },
+    "types": ["vite/client", "vite-plugin-pwa/client"]
   }
 }

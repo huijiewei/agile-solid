@@ -5,3 +5,4 @@ export * from './loader/Loader';
 export * from './button/Button';
 export * from './button/ButtonGroup';
 export * from './tooltip/Tooltip';
+export * from './animation/Animation';
