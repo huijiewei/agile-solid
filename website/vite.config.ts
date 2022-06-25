@@ -14,7 +14,7 @@ export default defineConfig({
         description: 'SolidJS + TypeScript UI Components',
         short_name: 'agile-solid',
         start_url: '/home',
-        lang: 'zh',
+        lang: 'zh-CN',
         icons: [
           { src: 'icons/pwa-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/pwa-512.png', sizes: '512x512', type: 'image/png' },

@@ -1,23 +1,20 @@
 import { Accessor, createContext, createSignal, ParentProps, Setter, useContext } from 'solid-js';
 
-export type LayoutContextValue = {
+type LayoutContextValue = {
   showAside: Accessor<boolean>;
   setShowAside: Setter<boolean>;
 };
 
 const LayoutContext = createContext<LayoutContextValue>();
 
-export const useShowAside = () => {
+export const useLayoutContext = () => {
   const context = useContext(LayoutContext);
 
   if (!context) {
     throw new Error('useShowAside must be used within a LayoutProvider');
   }
 
-  return {
-    showAside: context.showAside,
-    setShowAside: context.setShowAside,
-  };
+  return context;
 };
 
 export const LayoutProvider = (props: ParentProps) => {

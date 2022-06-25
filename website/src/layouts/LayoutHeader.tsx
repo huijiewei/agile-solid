@@ -3,19 +3,21 @@ import { Github, Menu, Close } from '@agile-solid/icons';
 import { Show } from 'solid-js';
 import LogoImage from '../assets/images/logo.svg';
 import { ThemeSwitcher } from '../components/theme-switcher/ThemeSwicher';
-import { useShowAside } from './LayoutProvider';
+import { useLayoutContext } from './LayoutProvider';
 
 export const LayoutHeader = () => {
-  const { showAside, setShowAside } = useShowAside();
+  const { showAside, setShowAside } = useLayoutContext();
 
   return (
     <header
-      class={
-        'sticky h-16 top-0 z-30 w-full border-b border-slate-200 bg-opacity-70 bg-white dark:bg-black py-3 backdrop-blur backdrop-saturate-50 laptop:z-50'
-      }
+      class={`sticky h-16 top-0 z-30 w-full border-b border-slate-200 bg-opacity-70 bg-white dark:bg-slate-900 py-3 backdrop-blur`}
     >
       <div class={'mx-auto flex max-w-7xl items-center justify-between px-3 tablet:px-5'}>
-        <button onClick={() => setShowAside((prev) => !prev)} class={'block tablet:hidden p-2'} type={'button'}>
+        <button
+          onClick={() => setShowAside((prev) => !prev)}
+          class={'block tablet:hidden p-2 text-slate-500 appearance-none select-none hover:text-slate-700'}
+          type={'button'}
+        >
           <Show when={showAside()} fallback={<Menu class={'h-5 w-5'} />}>
             <Close class={'h-5 w-5'} />
           </Show>

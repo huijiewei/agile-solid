@@ -1,8 +1,8 @@
-import { Tooltip, useDarkMode } from '@agile-solid/components';
+import { Tooltip, useThemeContext } from '@agile-solid/components';
 import { Moon, Sun } from '@agile-solid/icons';
 
 export const ThemeSwitcher = () => {
-  const { darkMode, setDarkMode } = useDarkMode();
+  const { darkMode, setDarkMode } = useThemeContext();
 
   return (
     <Tooltip placement={'bottom'} content={darkMode() ? '进入亮色模式' : '进入暗色模式'}>

@@ -1,18 +1,18 @@
-import { For } from 'solid-js';
-import { menus } from '../data/menus';
-import { tx } from 'twind';
 import { NavLink } from 'solid-app-router';
-import { useShowAside } from './LayoutProvider';
+import { For } from 'solid-js';
+import { tx } from 'twind';
+import { menus } from '../data/menus';
+import { useLayoutContext } from './LayoutProvider';
 
 export const LayoutAside = () => {
-  const { showAside, setShowAside } = useShowAside();
+  const { showAside, setShowAside } = useLayoutContext();
   return (
     <aside
       role={showAside() ? 'dialog' : undefined}
       class={tx(
-        showAside() ? 'w-full translate-x-0' : 'translate-x-[-100%]',
-        'fixed text-sm bottom-0 top-16 z-30 w-52 border-r border-r-slate-200',
-        'transition-transform duration-300 bg-white dark:bg-black translate-x-[-100%] tablet:translate-x-0 tablet:visible',
+        showAside() ? `block bg-white w-full dark:bg-slate-900` : 'mobile:hidden',
+        'tablet:(block w-52)',
+        'fixed text-sm bottom-0 top-16 z-30 border-r border-r-slate-200',
         'overscroll-contain overflow-y-auto overflow-x-hidden',
         '&::-webkit-scrollbar:(w-[9px] h-[9px]) &::-webkit-scrollbar-thumb:(border-([3px] solid transparent) bg-clip-padding bg-gray-300 rounded-[5px])'
       )}
