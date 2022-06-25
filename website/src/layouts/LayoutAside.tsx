@@ -10,7 +10,7 @@ export const LayoutAside = () => {
     <aside
       role={showAside() ? 'dialog' : undefined}
       class={tx(
-        showAside() ? `block bg-white w-full dark:bg-slate-900` : 'mobile:hidden',
+        showAside() ? `block bg-white w-full dark:bg-slate-900` : 'hidden',
         'tablet:(block w-52)',
         'fixed text-sm bottom-0 top-16 z-30 border-r border-r-slate-200',
         'overscroll-contain overflow-y-auto overflow-x-hidden',
