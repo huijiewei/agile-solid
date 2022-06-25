@@ -15,4 +15,9 @@ export default defineConfig({
       external: [...Object.keys(pkg.peerDependencies)],
     },
   },
+  resolve: {
+    alias: {
+      '@agile-solid/utils': resolve(__dirname, '../packages/utils/src'),
+    },
+  },
 });

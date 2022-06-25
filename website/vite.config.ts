@@ -55,11 +55,12 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: [
-      {
-        find: /^@agile-solid\/(.*)$/,
-        replacement: resolve(__dirname, '../packages/$1/src'),
-      },
-    ],
+    alias: {
+      '@agile-solid/components': resolve(__dirname, '../packages/components/src'),
+      '@agile-solid/hooks': resolve(__dirname, '../packages/hooks/src'),
+      '@agile-solid/twind': resolve(__dirname, '../packages/twind/src'),
+      '@agile-solid/icons': resolve(__dirname, '../packages/icons/src'),
+      '@agile-solid/utils': resolve(__dirname, '../packages/utils/src'),
+    },
   },
 });
