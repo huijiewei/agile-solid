@@ -3,12 +3,13 @@ import { Suspense } from 'solid-js';
 import { LayoutAside } from './LayoutAside';
 import { LayoutFooter } from './LayoutFooter';
 import { LayoutHeader } from './LayoutHeader';
+import { LayoutProvider } from './LayoutProvider';
 
 export const DefaultLayout = () => {
   return (
-    <>
+    <LayoutProvider>
       <LayoutHeader />
-      <div class={'text-slate-900 mx-auto max-w-7xl'}>
+      <div class={'text-slate-800 mx-auto max-w-7xl'}>
         <LayoutAside />
         <div class={'tablet:pl-52'}>
           <main class={'mx-auto h-full p-5'}>
@@ -19,6 +20,6 @@ export const DefaultLayout = () => {
           <LayoutFooter />
         </div>
       </div>
-    </>
+    </LayoutProvider>
   );
 };

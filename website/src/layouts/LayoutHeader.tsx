@@ -1,12 +1,25 @@
 import { Tooltip, VisuallyHidden } from '@agile-solid/components';
-import { Github } from '@agile-solid/icons';
+import { Github, Menu, Close } from '@agile-solid/icons';
+import { Show } from 'solid-js';
 import LogoImage from '../assets/images/logo.svg';
 import { ThemeSwitcher } from '../components/theme-switcher/ThemeSwicher';
+import { useShowAside } from './LayoutProvider';
 
 export const LayoutHeader = () => {
+  const { showAside, setShowAside } = useShowAside();
+
   return (
-    <header class={'sticky top-0 z-30 w-full border-b border-slate-200 bg-opacity-90 py-3 backdrop-blur laptop:z-50'}>
-      <div class={'mx-auto flex max-w-7xl items-center justify-between pl-1 pr-3 tablet:px-5'}>
+    <header
+      class={
+        'sticky h-16 top-0 z-30 w-full border-b border-slate-200 bg-opacity-70 bg-white dark:bg-black py-3 backdrop-blur backdrop-saturate-50 laptop:z-50'
+      }
+    >
+      <div class={'mx-auto flex max-w-7xl items-center justify-between px-3 tablet:px-5'}>
+        <button onClick={() => setShowAside((prev) => !prev)} class={'block tablet:hidden p-2'} type={'button'}>
+          <Show when={showAside()} fallback={<Menu class={'h-5 w-5'} />}>
+            <Close class={'h-5 w-5'} />
+          </Show>
+        </button>
         <div class={'flex flex-row items-center'}>
           <img
             width={'36'}
@@ -15,7 +28,7 @@ export const LayoutHeader = () => {
             alt={'Agile UI'}
             src={LogoImage}
           />
-          <span class={'ml-1.5 inline-block align-middle text-[22px] font-bold'}>Agile Solid</span>
+          <span class={'ml-1.5 inline-block align-middle text-xl font-bold'}>Agile Solid</span>
           <span
             class={
               'ml-3 hidden tablet:inline-block rounded-sm bg-slate-100 px-1.5 py-0.5 align-middle text-xs font-bold text-orange-700'

@@ -1,7 +1,4 @@
-import { NavLink } from 'solid-app-router';
-import { For } from 'solid-js';
-
-const navMenus = [
+export const menus = [
   {
     label: '主页',
     path: '/home',
@@ -161,45 +158,3 @@ const navMenus = [
     ],
   },
 ];
-
-export const LayoutNavMenu = () => {
-  return (
-    <nav class={'relative'}>
-      <ul class={'space-y-3 p-5'}>
-        <For each={navMenus} fallback={<div>Loading...</div>}>
-          {(menu) => (
-            <li>
-              <h5 class={'mb-3 font-medium'}>
-                {menu.path ? (
-                  <NavLink activeClass={'text-blue-700'} class={'hover:text-gray-700'} href={menu.path}>
-                    {menu.label}
-                  </NavLink>
-                ) : (
-                  menu.label
-                )}
-              </h5>
-              {menu.children && (
-                <ul class={'space-y-2 border-l border-l-gray-100'}>
-                  <For each={menu.children} fallback={<div>Loading...</div>}>
-                    {(child) => (
-                      <li>
-                        <NavLink
-                          activeClass={'border-l-blue-600 text-blue-700'}
-                          inactiveClass={'text-gray-700 hover:border-l-gray-400 hover:text-gray-900'}
-                          class={'-ml-px block border-l border-transparent pl-4'}
-                          href={child.path}
-                        >
-                          {child.label}
-                        </NavLink>
-                      </li>
-                    )}
-                  </For>
-                </ul>
-              )}
-            </li>
-          )}
-        </For>
-      </ul>
-    </nav>
-  );
-};
