@@ -1,4 +1,3 @@
-import { mergeRefs } from '@agile-solid/utils';
 import { mergeProps, Show, splitProps } from 'solid-js';
 import type { JSX } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
@@ -144,7 +143,7 @@ export const Button = (props: PolymorphicComponentProps<'button', ButtonProps>) 
           local.disabled || local.loading,
           local.active,
           group && { vertical: group.vertical || false }
-        )[local.variant || 'solid'],
+        )[local.variant],
         local.class
       )}
       disabled={local.disabled || local.loading}
