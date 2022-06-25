@@ -28,7 +28,7 @@ export const LayoutHeader = () => {
             alt={'Agile UI'}
             src={LogoImage}
           />
-          <span class={'ml-1.5 inline-block align-middle text-xl font-bold'}>Agile Solid</span>
+          <span class={'ml-1.5 inline-block align-middle text-[1.5rem] font-bold'}>Agile Solid</span>
           <span
             class={
               'ml-3 hidden tablet:inline-block rounded-sm bg-slate-100 px-1.5 py-0.5 align-middle text-xs font-bold text-orange-700'
