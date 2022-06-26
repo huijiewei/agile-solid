@@ -2,10 +2,25 @@ import { resolve } from 'path';
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import solidPlugin from 'vite-plugin-solid';
+import mdxPlugin from '@mdx-js/rollup';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
 
 export default defineConfig({
   plugins: [
-    solidPlugin(),
+    {
+      ...mdxPlugin({
+        jsx: true,
+        jsxImportSource: 'solid-js',
+        providerImportSource: 'solid-mdx',
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [rehypeSlug],
+      }),
+      enforce: 'pre',
+    },
+    solidPlugin({
+      extensions: ['.mdx', '.md'],
+    }),
     splitVendorChunkPlugin(),
     VitePWA({
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'safari-pinned-tab.svg'],

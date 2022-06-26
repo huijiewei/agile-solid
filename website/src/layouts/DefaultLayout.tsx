@@ -1,5 +1,6 @@
 import { Outlet } from 'solid-app-router';
 import { Suspense } from 'solid-js';
+import { LazyLoading } from '../components/lazy-loading/LazyLoading';
 import { LayoutAside } from './LayoutAside';
 import { LayoutFooter } from './LayoutFooter';
 import { LayoutHeader } from './LayoutHeader';
@@ -13,7 +14,7 @@ export const DefaultLayout = () => {
         <LayoutAside />
         <div class={'tablet:pl-52'}>
           <main class={'mx-auto h-full p-5'}>
-            <Suspense fallback={<p>Loading...</p>}>
+            <Suspense fallback={<LazyLoading class={'h-96'} />}>
               <Outlet />
             </Suspense>
           </main>
