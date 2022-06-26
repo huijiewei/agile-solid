@@ -3,7 +3,7 @@ import { useRoutes } from 'solid-app-router';
 import { routes } from './data/routes';
 
 const App = () => {
-  const splash = document.getElementById('index-splash');
+  const splash = document.getElementById('appSplash');
 
   useEventListener(
     'animationend',

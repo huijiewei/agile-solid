@@ -1,5 +1,5 @@
 import { isBrowser } from '@agile-solid/utils';
-import { createEffect, createSignal, onCleanup } from 'solid-js';
+import { createSignal, onCleanup } from 'solid-js';
 
 export const useMediaQuery = (query: string) => {
   if (!isBrowser()) {
@@ -8,19 +8,17 @@ export const useMediaQuery = (query: string) => {
 
   const media = window.matchMedia(query);
 
-  const [state, setState] = createSignal(media.matches);
+  const [matches, setMatches] = createSignal(media.matches);
 
-  createEffect(() => {
-    const handleChange = () => {
-      setState(media.matches);
-    };
+  const handleChange = () => {
+    setMatches(media.matches);
+  };
 
-    media.addEventListener('change', handleChange);
+  media.addEventListener('change', handleChange);
 
-    onCleanup(() => {
-      media.removeEventListener('change', handleChange);
-    });
+  onCleanup(() => {
+    media.removeEventListener('change', handleChange);
   });
 
-  return state;
+  return matches;
 };

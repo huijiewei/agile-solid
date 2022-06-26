@@ -1,6 +1,7 @@
 import { isFunction } from '@agile-solid/utils';
 import type { Accessor, Setter } from 'solid-js';
-import { createEffect, createSignal, onCleanup } from 'solid-js';
+import { createEffect, createSignal } from 'solid-js';
+import { useEventListener } from '../use-event-listener';
 
 export const useLocalStorage = <T>(key: string, initialValue: (() => T) | T): [Accessor<T>, Setter<T>] => {
   const getStoredValue = () => {
@@ -37,16 +38,8 @@ export const useLocalStorage = <T>(key: string, initialValue: (() => T) | T): [A
     }
   });
 
-  createEffect(() => {
-    const handleChange = (e: StorageEvent) => {
-      setState(e.newValue ? JSON.parse(e.newValue) : undefined);
-    };
-
-    window.addEventListener('storage', handleChange);
-
-    onCleanup(() => {
-      window.removeEventListener('storage', handleChange);
-    });
+  useEventListener('storage', (e: StorageEvent) => {
+    setState(e.newValue ? JSON.parse(e.newValue) : undefined);
   });
 
   return [state, setState];

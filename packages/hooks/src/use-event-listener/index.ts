@@ -1,4 +1,4 @@
-import { createEffect, onCleanup } from 'solid-js';
+import { onCleanup } from 'solid-js';
 
 export type Target = HTMLElement | Element | Window | Document;
 
@@ -37,23 +37,21 @@ export const useEventListener: UseEventListener = (
   handler: (event: Event) => void,
   options: Options = {}
 ) => {
-  createEffect(() => {
-    const targetElement = options?.target || window;
+  const targetElement = options?.target || window;
 
-    if (!targetElement?.addEventListener) {
-      return;
-    }
+  if (!targetElement?.addEventListener) {
+    return;
+  }
 
-    targetElement.addEventListener(eventName, handler, {
+  targetElement.addEventListener(eventName, handler, {
+    capture: options.capture,
+    once: options.once,
+    passive: options.passive,
+  });
+
+  onCleanup(() => {
+    targetElement.removeEventListener(eventName, handler, {
       capture: options.capture,
-      once: options.once,
-      passive: options.passive,
-    });
-
-    onCleanup(() => {
-      targetElement.removeEventListener(eventName, handler, {
-        capture: options.capture,
-      });
     });
   });
 };

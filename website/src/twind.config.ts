@@ -18,5 +18,5 @@ export default {
       { backgroundImage: 'radial-gradient(circle, var(--tw-gradient-from) 1px, var(--tw-gradient-to) 1px)' },
     ],
   ],
-  ignorelist: [/^index-splash-/],
+  ignorelist: [/^appSplash/],
 } as TwindUserConfig;
