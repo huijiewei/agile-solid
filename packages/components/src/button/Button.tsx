@@ -1,7 +1,7 @@
 import { mergeProps, Show, splitProps } from 'solid-js';
 import type { JSX } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
-import { tx } from 'twind';
+import { cx } from 'twind';
 import type { PolymorphicComponentProps } from '../utils/component';
 import { useButtonGroup } from './ButtonGroup';
 import type { ButtonBaseProps } from './ButtonGroup';
@@ -128,7 +128,7 @@ export const Button = (props: PolymorphicComponentProps<'button', ButtonProps>) 
     <Dynamic
       component={local.as}
       type={local.type}
-      class={tx(
+      class={cx(
         'inline-flex select-none appearance-none items-center justify-center whitespace-nowrap border align-middle duration-300 transition-colors',
         group
           ? `first:(${group.vertical ? 'rounded-tl rounded-tr' : 'rounded-tl rounded-bl'}) last:(${

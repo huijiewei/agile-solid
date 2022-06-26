@@ -1,5 +1,5 @@
 import { createContext, mergeProps, splitProps, useContext } from 'solid-js';
-import { tx } from 'twind';
+import { cx } from 'twind';
 import type { PrimitiveComponentProps } from '../utils/component';
 import type { ScaleColor, Size } from '../utils/types';
 
@@ -50,7 +50,7 @@ export const ButtonGroup = (props: PrimitiveComponentProps<'div', ButtonGroupPro
   const [local, rest] = splitProps(propsWithDefault, ['size', 'color', 'variant', 'vertical', 'children', 'class']);
 
   return (
-    <div role={'group'} class={tx('inline-flex', local.vertical ? 'flex-col' : 'flex-row', local.class)} {...rest}>
+    <div role={'group'} class={cx('inline-flex', local.vertical ? 'flex-col' : 'flex-row', local.class)} {...rest}>
       <ButtonGroupContext.Provider
         value={{ size: local.size, color: local.color, variant: local.variant, vertical: local.vertical }}
       >

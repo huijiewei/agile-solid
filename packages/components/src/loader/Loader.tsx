@@ -1,5 +1,5 @@
 import { mergeProps, splitProps } from 'solid-js';
-import { tx } from 'twind';
+import { cx } from 'twind';
 import type { PrimitiveComponentProps } from '../utils/component';
 import type { ScaleColor, Size } from '../utils/types';
 import { VisuallyHidden } from '../visually-hidden/VisuallyHidden';
@@ -44,7 +44,7 @@ export const Loader = (props: PrimitiveComponentProps<'span', LoaderProps>) => {
 
   return (
     <span
-      class={tx(
+      class={cx(
         'inline-block animate-spin rounded-full',
         loaderSizes[local.size as Size],
         local.color

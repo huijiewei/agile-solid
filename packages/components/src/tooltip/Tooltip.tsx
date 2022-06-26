@@ -23,7 +23,7 @@ import {
 import type { JSX } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { Portal } from 'solid-js/web';
-import { tx } from 'twind';
+import { cx } from 'twind';
 import { Animation } from '../animation/Animation';
 import type { AnimationBaseProps } from '../animation/Animation';
 import type { PrimitiveComponentProps } from '../utils/component';
@@ -189,13 +189,15 @@ export const Tooltip = (props: PrimitiveComponentProps<'div', TooltipProps>) => 
           show={open()}
           id={id}
           role={'tooltip'}
-          class={tx(
+          class={cx(
             'absolute inline-block rounded py-1 px-2 text-sm border z-50',
             `border-${local.color}-700 bg-${local.color}-700 text-${local.color}-50`,
-            data.y != null && (data.y >= 0 ? `top-[${data.y}px]` : `-top-[${-data.y}px]`),
-            data.x != null && (data.x >= 0 ? `left-[${data.x}px]` : `-left-[${-data.x}px]`),
             local.class
           )}
+          style={{
+            top: data.y ? `${data.y}px` : '',
+            left: data.x ? `${data.x}px` : '',
+          }}
           {...rest}
         >
           {local.content}
@@ -248,7 +250,7 @@ const TooltipArrow = (props: TooltipArrowProps) => {
 
   return (
     <span
-      class={tx(
+      class={cx(
         'absolute h-[8px] w-[8px] rotate-45',
         `border-${props.color}-700 bg-${props.color}-700 text-${props.color}-50`,
         `-${opposites[placement.side]}-[4px]`,

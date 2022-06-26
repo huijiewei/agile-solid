@@ -1,5 +1,5 @@
 import { splitProps } from 'solid-js';
-import { tx } from 'twind';
+import { cx } from 'twind';
 import { Loader } from '../loader/Loader';
 import type { PrimitiveComponentProps } from '../utils/component';
 import type { Size } from '../utils/types';
@@ -23,7 +23,7 @@ export const ButtonLoader = (props: PrimitiveComponentProps<'span', ButtonLoader
 
   return (
     <span
-      class={tx(
+      class={cx(
         'flex items-center',
         local.label ? 'relative' : 'absolute',
         local.placement == 'start' ? local.label && 'mr-2' : local.label && 'ml-2',

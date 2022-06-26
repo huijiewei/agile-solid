@@ -1,5 +1,5 @@
 import { createEffect, createSignal, mergeProps, onCleanup, Show, splitProps } from 'solid-js';
-import { tx } from 'twind';
+import { cx } from 'twind';
 import type { PrimitiveComponentProps } from '../utils/component';
 import { Canceller, clearAnimationFrameTimeout, setAnimationFrameTimeout } from './utils';
 
@@ -82,7 +82,7 @@ export const Animation = (props: PrimitiveComponentProps<'div', AnimationProps>)
   return (
     <Show when={shouldMount()}>
       <div
-        class={tx(
+        class={cx(
           `duration-[${local.duration}ms] ${local.transition}`,
           stage() == 'enter' ? local.enter : local.exit,
           local.class
