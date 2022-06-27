@@ -30,9 +30,7 @@
     "solid-js": ">=1"
   },
   "dependencies": {
-    "@testing-library/dom": "^8.14.0",
-    "@testing-library/jest-dom": "^5.16.4",
-    "twind": "next"
+    "@testing-library/dom": "^8.14.0"
   },
   "devDependencies": {
     "solid-js": "^1.4.4"

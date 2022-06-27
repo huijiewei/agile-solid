@@ -5,10 +5,6 @@ import View from '../views/components/View';
 import Home from '../views/site/Home';
 import NotFound from '../views/site/NotFound';
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const MdxButton = lazy(() => import(`../docs/components/Button.mdx`));
-
 export const routes = [
   {
     path: '/',
@@ -22,8 +18,9 @@ export const routes = [
         children: [
           {
             path: '/button',
-            component: () => <MdxButton />,
+            component: lazy(() => import('../docs/components/Button.mdx')),
           },
+          { path: '/*', component: () => lazy(() => import('../views/components/NotFound')) },
         ],
       },
       { path: '/*', component: () => <NotFound /> },
