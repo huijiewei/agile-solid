@@ -1,4 +1,6 @@
 import { resolve } from 'path';
+import remarkFrontmatter from 'remark-frontmatter';
+import { remarkMdxFrontmatter } from 'remark-mdx-frontmatter';
 import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import solidPlugin from 'vite-plugin-solid';
@@ -8,19 +10,12 @@ import rehypeSlug from 'rehype-slug';
 
 export default defineConfig({
   plugins: [
-    {
-      ...mdxPlugin({
-        jsx: true,
-        jsxImportSource: 'solid-js',
-        providerImportSource: 'solid-mdx',
-        remarkPlugins: [remarkGfm],
-        rehypePlugins: [rehypeSlug],
-      }),
-      enforce: 'pre',
-    },
-    solidPlugin({
-      extensions: ['.mdx', '.md'],
+    mdxPlugin({
+      jsxImportSource: 'solid-jsx',
+      remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkGfm],
+      rehypePlugins: [rehypeSlug],
     }),
+    solidPlugin(),
     splitVendorChunkPlugin(),
     VitePWA({
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'safari-pinned-tab.svg'],
@@ -44,6 +39,7 @@ export default defineConfig({
     }),
   ],
   build: {
+    target: 'esnext',
     rollupOptions: {
       output: {
         manualChunks: (id) => {

@@ -27,6 +27,8 @@ export const Icon = (props: JSX.SvgSVGAttributes<SVGSVGElement>) => {
 
   return (
     <svg
+      width={'1rem'}
+      height={'1rem'}
       xmlns="http://www.w3.org/2000/svg"
       fill={local.fill}
       viewBox={local.viewBox}

@@ -1,7 +1,8 @@
-import { splitProps } from 'solid-js';
+import { children, splitProps } from 'solid-js';
 import type { ComponentProps } from 'solid-js';
 import * as AgileUI from '@agile-solid/components';
 import * as AgileIcon from '@agile-solid/icons';
+import { Dynamic } from 'solid-js/web';
 import { cx } from 'twind';
 
 export const components = {
@@ -20,9 +21,16 @@ export const components = {
   h3: (props: ComponentProps<'h3'>) => <h3 class={'text-lg font-bold'} {...props} />,
   h4: (props: ComponentProps<'h4'>) => <h4 class={'text-lg font-bold'} {...props} />,
   h5: (props: ComponentProps<'h5'>) => <h5 class={'text-base font-bold'} {...props} />,
-  pre: (props: ComponentProps<'pre'>) => (
-    <pre class={'text-sm bg-slate-50 px-3 py-2 border border-slate-200 rounded'} {...props} />
-  ),
+  code: (props: ComponentProps<'code'>) => {
+    return <Dynamic component={'pre'} {...props} />;
+  },
+  pre: (props: ComponentProps<'pre'>) => {
+    const [local, rest] = splitProps(props, ['children']);
+
+    const code = children(() => local.children);
+
+    return <Dynamic component={code} {...rest} />;
+  },
   ...AgileUI,
   ...AgileIcon,
 };

@@ -6,3 +6,4 @@ export * from './icons/Github';
 export * from './icons/Clipboard';
 export * from './icons/Menu';
 export * from './icons/Close';
+export * from './icons/Edit';

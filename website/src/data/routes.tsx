@@ -1,5 +1,4 @@
 import { Navigate } from 'solid-app-router';
-import { lazy } from 'solid-js';
 import { DefaultLayout } from '../layouts/DefaultLayout';
 import View from '../views/components/View';
 import Home from '../views/site/Home';
@@ -13,15 +12,8 @@ export const routes = [
       { path: '/', component: () => <Navigate href={'home'} /> },
       { path: '/home', component: () => <Home /> },
       {
-        path: '/components',
+        path: '/components/:component',
         component: () => <View />,
-        children: [
-          {
-            path: '/button',
-            component: lazy(() => import('../docs/components/Button.mdx')),
-          },
-          { path: '/*', component: () => lazy(() => import('../views/components/NotFound')) },
-        ],
       },
       { path: '/*', component: () => <NotFound /> },
     ],
