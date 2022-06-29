@@ -7,3 +7,4 @@ export * from './icons/Clipboard';
 export * from './icons/Menu';
 export * from './icons/Close';
 export * from './icons/Edit';
+export * from './icons/Config';

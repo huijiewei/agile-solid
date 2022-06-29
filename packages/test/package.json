@@ -33,6 +33,6 @@
     "@testing-library/dom": "^8.14.0"
   },
   "devDependencies": {
-    "solid-js": "^1.4.4"
+    "solid-js": "^1.4.5"
   }
 }

@@ -40,6 +40,6 @@
     "@agile-solid/test": "*",
     "@agile-solid/twind": "*",
     "twind": "next",
-    "solid-js": "^1.4.4"
+    "solid-js": "^1.4.5"
   }
 }

@@ -22,6 +22,7 @@ export default defineConfig({
       '@agile-solid/twind': resolve(__dirname, './packages/twind/src'),
       '@agile-solid/icons': resolve(__dirname, './packages/icons/src'),
       '@agile-solid/utils': resolve(__dirname, './packages/utils/src'),
+      '@agile-solid/live': resolve(__dirname, './packages/live/src'),
       '@agile-solid/test': resolve(__dirname, './packages/test/src'),
     },
   },

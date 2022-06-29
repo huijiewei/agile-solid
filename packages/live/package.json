@@ -1,5 +1,5 @@
 {
-  "name": "@agile-solid/icons",
+  "name": "@agile-solid/live",
   "version": "1.0.0",
   "license": "MIT",
   "sideEffects": false,
@@ -24,13 +24,14 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huijiewei/agile-solid.git",
-    "directory": "packages/icons"
+    "directory": "packages/live"
   },
   "peerDependencies": {
     "solid-js": ">=1"
   },
   "dependencies": {
-    "@agile-solid/utils": "*"
+    "@agile-solid/utils": "*",
+    "sucrase": "^3.22.0"
   },
   "devDependencies": {
     "solid-js": "^1.4.5"

@@ -7,7 +7,7 @@ import { createStore } from 'solid-js/store';
 import { cx } from 'twind';
 import { ErrorAlert } from '../../components/error-alert/ErrorAlert';
 import { LazyLoading } from '../../components/lazy-loading/LazyLoading';
-import { components } from '../../components/mdx-components/MdxComponents';
+import { components } from '../../data/components';
 import Image500 from '../../assets/images/500.png';
 
 type Mdx = {
@@ -19,7 +19,7 @@ type Mdx = {
 const View = () => {
   const params = useParams();
 
-  const [mdx, setMdx] = createStore<Mdx>({});
+  const [mdx, setMdx] = createStore<Mdx>();
   const [error, setError] = createSignal<boolean>();
 
   const githubUrl = 'https://github.com/huijiewei/agile-solid/blob/main';
@@ -35,7 +35,7 @@ const View = () => {
     sourceLink = `${githubUrl}/packages/components/src/${componentSlug}/${componentName}.tsx`;
 
     import(`../../docs/components/${componentName}.mdx`)
-      .then(async (mdx) => {
+      .then((mdx) => {
         setMdx(mdx);
         setError(false);
       })
@@ -68,7 +68,7 @@ const View = () => {
         >
           <div class={'flex flex-row items-center justify-between'}>
             <h1 class={'text-xl font-bold'}>{mdx.title}</h1>
-            <a class={'inline-flex flex-row items-center text-sm'} target={'_blank'} href={sourceLink} rel="noreferrer">
+            <a class={'inline-flex flex-row items-center'} target={'_blank'} href={sourceLink} rel="noreferrer">
               <Github class={'mr-1'} />
               查看源代码
             </a>
@@ -76,7 +76,7 @@ const View = () => {
           <p>{mdx.description}</p>
           {mdx.default && createComponent(mdx.default, { components })}
           <p>
-            <a class={'inline-flex flex-row items-center text-sm'} target={'_blank'} href={docLink} rel="noreferrer">
+            <a class={'inline-flex flex-row items-center'} target={'_blank'} href={docLink} rel="noreferrer">
               <Edit class={'mr-1'} />
               编辑这个页面
             </a>

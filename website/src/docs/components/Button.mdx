@@ -5,17 +5,9 @@ description: 按钮组件用于触发动作或事件，例如提交表单、打�
 
 ## 用法
 
-<div class={'flex flex-row gap-3'}>
-  <Button>按钮</Button>
-  <Button variant={'outline'}>按钮</Button>
-  <Button variant={'light'}>按钮</Button>
-  <Button variant={'subtle'}>按钮</Button>
-  <Button variant={'link'}>按钮</Button>
-</div>
-
 ## 样式
 
-```tsx
+```tsx preview editable
 <div class={'flex flex-row gap-3'}>
   <Button>按钮</Button>
   <Button variant={'outline'}>按钮</Button>
@@ -27,7 +19,7 @@ description: 按钮组件用于触发动作或事件，例如提交表单、打�
 
 ## 颜色
 
-```tsx live editable
+```tsx preview editable
 <div class={'flex flex-row gap-3'}>
   <Button>按钮</Button>
   <Button color={'green'}>按钮</Button>
@@ -39,24 +31,24 @@ description: 按钮组件用于触发动作或事件，例如提交表单、打�
 
 ## 图标按钮
 
-```tsx live editable
+```tsx preview editable
 <div class={'flex flex-row gap-3'}>
   <Button>
-    <Config className={'mr-1'} /> 设置
+    <Config class={'mr-1'} /> 设置
   </Button>
-  <Button className={'!px-0 aspect-square'}>
+  <Button class={'!px-0 aspect-square'}>
     <Config />
   </Button>
-  <Button className={'!px-0 aspect-square'} variant={'outline'} color={'slate'}>
+  <Button class={'!px-0 aspect-square'} variant={'outline'} color={'slate'}>
     <Github />
   </Button>
-  <Button className={'!px-0 aspect-square rounded-full'} color={'yellow'}>
+  <Button class={'!px-0 aspect-square rounded-full'} color={'yellow'}>
     <Github />
   </Button>
-  <Button className={'!px-0 aspect-square'} variant={'light'} color={'red'}>
+  <Button class={'!px-0 aspect-square'} variant={'light'} color={'red'}>
     <Sun />
   </Button>
-  <Button className={'!px-0 aspect-square'} variant={'subtle'} color={'lime'}>
+  <Button class={'!px-0 aspect-square'} variant={'subtle'} color={'lime'}>
     <Moon />
   </Button>
 </div>
@@ -64,7 +56,7 @@ description: 按钮组件用于触发动作或事件，例如提交表单、打�
 
 ## 状态
 
-```tsx live editable
+```tsx preview editable
 <div class={'flex flex-row gap-3'}>
   <Button disabled>按钮</Button>
   <Button loading>按钮</Button>

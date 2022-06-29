@@ -33,6 +33,7 @@
     "@agile-solid/utils": "*"
   },
   "devDependencies": {
-    "@agile-solid/test": "*"
+    "@agile-solid/test": "*",
+    "solid-js": "^1.4.5"
   }
 }

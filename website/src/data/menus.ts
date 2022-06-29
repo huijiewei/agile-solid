@@ -29,7 +29,7 @@ export const menus = [
       },
       {
         label: '加载中',
-        path: '/components/spinner',
+        path: '/components/loader',
       },
       {
         label: '输入框',
@@ -149,7 +149,7 @@ export const menus = [
       },
       {
         label: '覆盖层加载',
-        path: '/components/spinner-overlay',
+        path: '/components/loader-overlay',
       },
       {
         label: '工具提示',

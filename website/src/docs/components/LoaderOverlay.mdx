@@ -1,0 +1,71 @@
+---
+title: 覆盖层加载
+description: 覆盖层加载。
+---
+
+## 导入
+
+```tsx
+import { SpinnerOverlay } from '@agile-solid/components';
+```
+
+## 用法
+
+```tsx preview editable
+function SpinnerOverlayDemo() {
+  const [visible, setVisible] = createSignal(false);
+
+  return (
+    <>
+      <div class={'relative w-fit mx-auto p-5 shadow-md'}>
+        <LoaderOverlay visible={visible} />
+        <FormDemo />
+      </div>
+
+      <div class={'flex mt-3 justify-center'}>
+        <Button onClick={() => setVisible((v) => !v)}>切换覆盖层</Button>
+      </div>
+    </>
+  );
+}
+```
+
+## 自定义加载器
+
+```tsx preview editable
+<div class={'relative w-fit p-5 mx-auto shadow-md'}>
+  <LoaderOverlay visible={true}>
+    <Loader color={'green'} size={'xl'} />
+  </LoaderOverlay>
+  <FormDemo />
+</div>
+```
+
+## 圆角
+
+```tsx preview editable
+<div class={'relative w-fit p-5 mx-auto shadow-md rounded'}>
+  <LoaderOverlay visible={true} radius />
+  <FormDemo />
+</div>
+```
+
+## 颜色
+
+```tsx preview editable
+<div class={'relative w-fit p-5 mx-auto shadow-md'}>
+  <LoaderOverlay visible={true} color={'yellow'} />
+  <FormDemo />
+</div>
+```
+
+## 模糊
+
+```tsx preview editable
+<div class={'relative w-fit p-5 mx-auto shadow-md'}>
+  <LoaderOverlay visible={true} blur={1} />
+  <FormDemo />
+</div>
+```
+
+## 属性

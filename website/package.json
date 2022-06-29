@@ -10,12 +10,13 @@
   "dependencies": {
     "@agile-solid/components": "*",
     "@agile-solid/icons": "*",
+    "@agile-solid/live": "*",
     "@agile-solid/twind": "*",
     "@twind/preset-autoprefix": "next",
     "@twind/preset-ext": "next",
     "@twind/preset-tailwind": "next",
     "solid-app-router": "^0.4.1",
-    "solid-js": "^1.4.4",
+    "solid-js": "^1.4.5",
     "twind": "next"
   },
   "devDependencies": {
@@ -24,6 +25,7 @@
     "rehype-slug": "^5.0.1",
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
+    "remark-mdx-code-meta": "^1.0.0",
     "remark-mdx-frontmatter": "^1.1.1",
     "solid-jsx": "^0.9.0",
     "vite-plugin-pwa": "^0.12.0",
