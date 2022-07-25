@@ -34,12 +34,12 @@
   "dependencies": {
     "@agile-solid/hooks": "*",
     "@agile-solid/utils": "*",
-    "@floating-ui/dom": "^0.5.4"
+    "@floating-ui/dom": "^1.0.0"
   },
   "devDependencies": {
     "@agile-solid/test": "*",
     "@agile-solid/twind": "*",
     "twind": "next",
-    "solid-js": "^1.4.5"
+    "solid-js": "^1.4.8"
   }
 }

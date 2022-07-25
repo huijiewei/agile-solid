@@ -10,7 +10,9 @@ export const LayoutHeader = () => {
 
   return (
     <header
-      class={`sticky h-16 top-0 z-30 w-full border-b border-slate-200 bg-opacity-70 bg-white dark:bg-slate-900 py-3 backdrop-blur`}
+      class={
+        'sticky h-16 top-0 z-30 w-full border-b border-slate-200 bg-opacity-70 bg-white dark:bg-slate-900 py-3 backdrop-blur'
+      }
     >
       <div class={'mx-auto flex max-w-7xl items-center justify-between px-3 tablet:px-5'}>
         <button

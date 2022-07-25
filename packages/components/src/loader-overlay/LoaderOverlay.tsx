@@ -1,15 +1,5 @@
 import { isFunction } from '@agile-solid/utils';
-import {
-  children,
-  createComponent,
-  createEffect,
-  createMemo,
-  createSignal,
-  JSX,
-  mergeProps,
-  splitProps,
-} from 'solid-js';
-import { Dynamic } from 'solid-js/web';
+import { children, createComponent, createEffect, createMemo, JSX, mergeProps, splitProps } from 'solid-js';
 import { cx } from 'twind';
 import { Animation } from '../animation/Animation';
 import { Loader } from '../loader/Loader';

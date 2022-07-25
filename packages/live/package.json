@@ -31,9 +31,9 @@
   },
   "dependencies": {
     "@agile-solid/utils": "*",
-    "sucrase": "^3.22.0"
+    "sucrase": "^3.24.0"
   },
   "devDependencies": {
-    "solid-js": "^1.4.5"
+    "solid-js": "^1.4.8"
   }
 }

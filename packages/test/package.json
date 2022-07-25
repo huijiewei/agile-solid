@@ -30,9 +30,9 @@
     "solid-js": ">=1"
   },
   "dependencies": {
-    "@testing-library/dom": "^8.14.0"
+    "@testing-library/dom": "^8.16.0"
   },
   "devDependencies": {
-    "solid-js": "^1.4.5"
+    "solid-js": "^1.4.8"
   }
 }
