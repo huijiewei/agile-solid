@@ -48,11 +48,7 @@ export default defineConfig({
             return 'solid';
           }
 
-          if (
-            id.includes('node_modules/twind') ||
-            id.includes('node_modules/@twind') ||
-            id.includes('node_modules/style-vendorizer')
-          ) {
+          if (id.includes('node_modules/@twind') || id.includes('node_modules/style-vendorizer')) {
             return 'twind';
           }
 

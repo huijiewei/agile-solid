@@ -1,6 +1,6 @@
 import { isBoolean, isNumber } from '@agile-solid/utils';
 import { mergeProps, Show, splitProps } from 'solid-js';
-import { cx } from 'twind';
+import { cx } from '@twind/core';
 import type { PrimitiveComponentProps } from '../utils/component';
 import type { Color } from '../utils/types';
 

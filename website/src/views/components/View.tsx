@@ -4,7 +4,7 @@ import type { MDXContent } from 'mdx/types';
 import { useParams } from 'solid-app-router';
 import { createComponent, createEffect, createSignal, onCleanup, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
-import { cx } from 'twind';
+import { cx } from '@twind/core';
 import { ErrorAlert } from '../../components/error-alert/ErrorAlert';
 import { LazyLoading } from '../../components/lazy-loading/LazyLoading';
 import { components } from '../../data/components';

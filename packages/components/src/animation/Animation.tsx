@@ -1,5 +1,5 @@
 import { createEffect, createSignal, mergeProps, onCleanup, Show, splitProps } from 'solid-js';
-import { cx } from 'twind';
+import { cx } from '@twind/core';
 import type { PrimitiveComponentProps } from '../utils/component';
 import { Canceller, clearAnimationFrameTimeout, setAnimationFrameTimeout } from './utils';
 

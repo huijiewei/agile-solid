@@ -1,5 +1,5 @@
 import { useLocation } from 'solid-app-router';
-import { createEffect, createMemo } from 'solid-js';
+import { createEffect } from 'solid-js';
 
 export const MetaTitle = () => {
   const location = useLocation();

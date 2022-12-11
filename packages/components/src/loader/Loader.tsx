@@ -1,5 +1,5 @@
-import { createEffect, mergeProps, splitProps } from 'solid-js';
-import { cx } from 'twind';
+import { mergeProps, splitProps } from 'solid-js';
+import { cx } from '@twind/core';
 import type { PrimitiveComponentProps } from '../utils/component';
 import type { ScaleColor, Size } from '../utils/types';
 import { VisuallyHidden } from '../visually-hidden/VisuallyHidden';

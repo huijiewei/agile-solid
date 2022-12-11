@@ -2,13 +2,13 @@
 import { ThemeProvider } from '@agile-solid/components';
 import { render } from 'solid-js/web';
 import { Router } from 'solid-app-router';
-import { setup } from 'twind';
+import { install } from '@twind/core';
 import { useRegisterSW } from 'virtual:pwa-register/solid';
 
 import App from './App';
 import twindConfig from './twind.config';
 
-setup(twindConfig);
+install(twindConfig);
 
 useRegisterSW();
 

@@ -1,5 +1,5 @@
 import { createContext, mergeProps, splitProps, useContext } from 'solid-js';
-import { cx } from 'twind';
+import { cx } from '@twind/core';
 import type { PrimitiveComponentProps } from '../utils/component';
 import type { ScaleColor, Size } from '../utils/types';
 

@@ -23,7 +23,7 @@ import {
 import type { JSX } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { Portal } from 'solid-js/web';
-import { cx } from 'twind';
+import { cx } from '@twind/core';
 import { Animation } from '../animation/Animation';
 import type { AnimationBaseProps } from '../animation/Animation';
 import type { PrimitiveComponentProps } from '../utils/component';

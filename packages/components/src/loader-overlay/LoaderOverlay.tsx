@@ -1,6 +1,6 @@
 import { isFunction } from '@agile-solid/utils';
 import { children, createComponent, createEffect, createMemo, JSX, mergeProps, splitProps } from 'solid-js';
-import { cx } from 'twind';
+import { cx } from '@twind/core';
 import { Animation } from '../animation/Animation';
 import { Loader } from '../loader/Loader';
 import { Overlay } from '../overlay/Overlay';

@@ -1,4 +1,4 @@
-import { autoDarkColor, css } from 'twind';
+import { autoDarkColor, css } from '@twind/core';
 import fontFamily from './presets/font-family';
 import fontSize from './presets/font-size';
 import screens from './presets/screens';

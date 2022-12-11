@@ -1,7 +1,7 @@
 import { Loader } from '@agile-solid/components';
 import { splitProps } from 'solid-js';
 import type { ComponentProps } from 'solid-js';
-import { cx } from 'twind';
+import { cx } from '@twind/core';
 
 export const LazyLoading = (props: ComponentProps<'div'>) => {
   const [local, rest] = splitProps(props, ['class']);

@@ -1,7 +1,7 @@
 import { mergeProps, Show, splitProps } from 'solid-js';
 import type { JSX } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
-import { cx } from 'twind';
+import { cx } from '@twind/core';
 import type { PolymorphicComponentProps } from '../utils/component';
 import { useButtonGroup } from './ButtonGroup';
 import type { ButtonBaseProps } from './ButtonGroup';
