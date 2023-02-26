@@ -1,4 +1,4 @@
-import { Outlet } from 'solid-app-router';
+import { Outlet } from '@solidjs/router';
 import { Suspense } from 'solid-js';
 import { LazyLoading } from '../components/lazy-loading/LazyLoading';
 import { LayoutAside } from './LayoutAside';
@@ -10,7 +10,7 @@ export const DefaultLayout = () => {
   return (
     <LayoutProvider>
       <LayoutHeader />
-      <div class={'text-slate-800 mx-auto max-w-7xl'}>
+      <div class={'text-gray-800 mx-auto max-w-7xl'}>
         <LayoutAside />
         <div class={'tablet:pl-52'}>
           <main class={'mx-auto h-full p-5'}>

@@ -1,43 +1,31 @@
-import { mergeProps, splitProps } from 'solid-js';
+import { isNumber } from '@agile-solid/utils';
 import type { JSX } from 'solid-js';
+import { mergeProps, splitProps } from 'solid-js';
 
-export type IconProps = Omit<JSX.SvgSVGAttributes<SVGSVGElement>, 'children'>;
+export type IconProps = JSX.SvgSVGAttributes<SVGSVGElement> & { size?: number | string };
 
-export const Icon = (props: JSX.SvgSVGAttributes<SVGSVGElement>) => {
-  const defaultProps: IconProps = {
-    fill: 'none',
-    viewBox: '0 0 24 24',
-    stroke: 'currentColor',
-    'stroke-width': 2,
-    'stroke-linecap': 'round',
-    'stroke-linejoin': 'round',
-  };
+export const Icon = (props: IconProps) => {
+  const propsWithDefault = mergeProps(
+    {
+      'stroke-width': 2,
+      'stroke-linecap': 'round' as IconProps['stroke-linecap'],
+      'stroke-linejoin': 'round' as IconProps['stroke-linejoin'],
+      size: '1em',
+      class: '',
+      stroke: 'currentColor',
+      viewBox: '1 1 22 22',
+      fill: 'none',
+    },
+    props
+  );
 
-  const propsWithDefault = mergeProps(defaultProps, props);
+  const [local, rest] = splitProps(propsWithDefault, ['size', 'class', 'children']);
 
-  const [local, rest] = splitProps(propsWithDefault, [
-    'fill',
-    'stroke',
-    'stroke-width',
-    'stroke-linecap',
-    'stroke-linejoin',
-    'viewBox',
-    'children',
-  ]);
+  const sizeClassName = () =>
+    isNumber(local.size) ? `h-${local.size} w-${local.size}` : `h-[${local.size}] w-[${local.size}]`;
 
   return (
-    <svg
-      width={'1rem'}
-      height={'1rem'}
-      xmlns="http://www.w3.org/2000/svg"
-      fill={local.fill}
-      viewBox={local.viewBox}
-      stroke={local.stroke}
-      stroke-width={local['stroke-width']}
-      stroke-linecap={local['stroke-linecap']}
-      stroke-linejoin={local['stroke-linejoin']}
-      {...rest}
-    >
+    <svg class={`${sizeClassName()} ${local.class}`} xmlns="http://www.w3.org/2000/svg" {...rest}>
       {local.children}
     </svg>
   );

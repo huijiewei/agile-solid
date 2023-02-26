@@ -1,5 +1,5 @@
 <p>
-  <img src="./assets/banner.png" alt="Agile Solid UI" />
+  <img src=".github/assets/banner.png" alt="Agile Solid UI" />
 </p>
 
 <div align="center">

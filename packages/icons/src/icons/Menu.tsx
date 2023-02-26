@@ -1,5 +1,4 @@
 import { type IconProps, Icon } from '../Icon';
-
 export const Menu = (props: IconProps) => {
   return (
     <Icon {...props}>

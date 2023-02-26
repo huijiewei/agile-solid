@@ -1,29 +1,14 @@
-import { autoDarkColor, css } from '@twind/core';
-import fontFamily from './presets/font-family';
-import fontSize from './presets/font-size';
-import screens from './presets/screens';
-import colors from './presets/colors';
-import fontWeight from './presets/font-weight';
-import borderRadius from './presets/border-radius';
+import { defineConfig } from '@twind/core';
+import presetAutoprefix from '@twind/preset-autoprefix';
+import presetExt from '@twind/preset-ext';
+import presetAgile from './presets/preset';
 
-export type Colors = typeof colors;
+export * from './types/color';
+export * from './types/types';
 
-export default () => {
-  return {
-    darkMode: 'class',
-    darkColor: autoDarkColor,
-    preflight: css`
-      body {
-        @apply text-base;
-      }
-    `,
-    theme: {
-      screens,
-      fontFamily,
-      fontSize,
-      colors,
-      fontWeight,
-      borderRadius,
-    },
-  };
+export const twindConfig = ({ presets = [], ...userConfig }) => {
+  return defineConfig({
+    presets: [presetAutoprefix(), presetExt(), presetAgile(), ...presets],
+    ...userConfig,
+  });
 };

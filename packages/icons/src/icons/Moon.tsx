@@ -1,5 +1,4 @@
 import { Icon, IconProps } from '../Icon';
-
 export const Moon = (props: IconProps) => {
   return (
     <Icon {...props}>

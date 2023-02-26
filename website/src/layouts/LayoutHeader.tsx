@@ -11,13 +11,13 @@ export const LayoutHeader = () => {
   return (
     <header
       class={
-        'sticky h-16 top-0 z-30 w-full border-b border-slate-200 bg-opacity-70 bg-white dark:bg-slate-900 py-3 backdrop-blur'
+        'sticky h-16 top-0 z-30 w-full border-b border-gray-200 bg-opacity-70 bg-white dark:bg-gray-900 py-3 backdrop-blur'
       }
     >
       <div class={'mx-auto flex max-w-7xl items-center justify-between px-3 tablet:px-5'}>
         <button
           onClick={() => setShowAside((prev) => !prev)}
-          class={'block tablet:hidden p-2 text-slate-500 appearance-none select-none hover:text-slate-700'}
+          class={'block tablet:hidden p-2 text-gray-500 appearance-none select-none hover:text-gray-700'}
           type={'button'}
         >
           <Show when={showAside()} fallback={<Menu class={'h-5 w-5'} />}>
@@ -35,7 +35,7 @@ export const LayoutHeader = () => {
           <span class={'ml-1.5 inline-block align-middle text-[1.5rem] font-bold'}>Agile Solid</span>
           <span
             class={
-              'ml-3 hidden tablet:inline-block rounded-sm bg-slate-100 px-1.5 py-0.5 align-middle text-xs font-bold text-orange-700'
+              'ml-3 hidden tablet:inline-block rounded-sm bg-gray-100 px-1.5 py-0.5 align-middle text-xs font-bold text-orange-700'
             }
           >
             ALPHA
@@ -45,7 +45,7 @@ export const LayoutHeader = () => {
           <ThemeSwitcher />
           <Tooltip placement={'bottom'} content={'Github 上的 Agile UI'}>
             <a
-              class={'block border-slate-300 rounded p-1 border text-slate-500 select-none hover:text-slate-700'}
+              class={'block border-gray-300 rounded p-1 border text-gray-500 select-none hover:text-gray-700'}
               rel="noreferrer"
               href="https://github.com/huijiewei/agile-solid"
               target="_blank"

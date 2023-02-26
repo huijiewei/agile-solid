@@ -23,10 +23,11 @@ export const MdxCode = (props: Props & CodeProps) => {
     <Show
       when={local.className}
       fallback={
-        <code class={'m-0 px-[0.4em] py-[0.2em] bg-slate-100 rounded text-sm'} {...rest}>
+        <code class={'m-0 px-[0.4em] py-[0.2em] bg-gray-100 rounded text-sm'} {...rest}>
           {local.children}
         </code>
       }
+      keyed
     >
       {local.children}
     </Show>
@@ -39,9 +40,9 @@ export const CodeBlock = (props: ComponentProps<'pre'> & CodeProps) => {
   return (
     <LiveProvider code={code() as string}>
       {props.preview && (
-        <LivePreview class={'border border-slate-300 p-3 rounded'} scope={{ ...AgileUI, ...AgileIcons, FormDemo }} />
+        <LivePreview class={'border border-gray-300 p-3 rounded'} scope={{ ...AgileUI, ...AgileIcons, FormDemo }} />
       )}
-      <LiveEditor editable={props.editable} class={'text-sm bg-slate-100 rounded p-3 leading-snug'} />
+      <LiveEditor editable={props.editable} class={'text-sm bg-gray-100 rounded p-3 leading-snug'} />
       {props.preview && <LiveError class={'mt-1 rounded bg-red-300 px-2 py-1 font-mono text-sm'} />}
     </LiveProvider>
   );

@@ -1,13 +1,22 @@
-import { mergeProps, Show, splitProps } from 'solid-js';
+import type { NumberSize } from '../utils/types';
+import type { ButtonBaseProps } from './ButtonGroup';
+import { useButtonGroup } from './ButtonGroup';
 import type { JSX } from 'solid-js';
+import { createMemo, mergeProps, Show, splitProps } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { cx } from '@twind/core';
-import type { PolymorphicComponentProps } from '../utils/component';
-import { useButtonGroup } from './ButtonGroup';
-import type { ButtonBaseProps } from './ButtonGroup';
-import { ButtonLoader } from './ButtonLoader';
+import { isNumber } from '@agile-solid/utils';
+import { ButtonSpinner } from './ButtonSpinner';
+import { createPolymorphicComponent } from '../utils/component';
+import { createTagName, mergeRefs } from '@agile-solid/hooks';
 
 export type ButtonProps = ButtonBaseProps & {
+  /**
+   * 边框圆角
+   * @default 'md'
+   */
+  radius?: NumberSize;
+
   /**
    * 类型
    * @default 'button'
@@ -40,61 +49,66 @@ export type ButtonProps = ButtonBaseProps & {
   /**
    * 加载器
    */
-  loader?: JSX.Element;
+  spinner?: JSX.Element;
 
   /**
    * 加载器位置
    * @default 'start'
    */
-  loaderPlacement?: 'start' | 'end';
+  spinnerPlacement?: 'start' | 'end';
 };
 
 const buttonSizes = {
-  xs: 'h-6 px-2 text-sm',
-  sm: 'h-7 px-2',
-  md: 'h-8 px-3',
-  lg: 'h-9 px-5',
-  xl: 'h-10 px-5 text-lg',
+  xs: 'h-6 px-3 text-sm',
+  sm: 'h-7 px-4',
+  md: 'h-8 px-5',
+  lg: 'h-9 px-6',
+  xl: 'h-10 px-7 text-lg',
 };
 
-const buttonVariants = (color: string, disabled: boolean, active: boolean, group?: { vertical: boolean }) => {
+const buttonVariants = (color: string, group?: { vertical: boolean }) => {
   return {
     solid: [
-      `text-white dark:text-black border-transparent`,
-      active ? `bg-${color}-800` : `bg-${color}-600`,
-      !disabled && !active && `hover:bg-${color}-700 active:bg-${color}-800`,
+      `no-underline text-white border-transparent bg-${color}-500 disabled:bg-${color}-500 hover:bg-${color}-600 active:bg-${color}-700`,
       group && `not-last-child:(border-${group.vertical ? 'b' : 'r'}-current)`,
     ],
     outline: [
-      `border-current text-${color}-600`,
-      active ? `bg-${color}-100` : `bg-white dark:bg-black`,
-      !disabled && !active && `hover:bg-${color}-50 active:bg-${color}-100`,
+      `no-underline border-current text-${color}-500 bg-white disabled:bg-white hover:bg-${color}-50 active:bg-${color}-100`,
       group && `not-first-child:(-m${group.vertical ? 't' : 'l'}-[1px])`,
     ],
     light: [
-      `border-transparent text-${color}-700`,
-      active ? `bg-${color}-200` : `bg-${color}-50`,
-      !disabled && !active && `hover:bg-${color}-100 active:bg-${color}-200`,
+      `no-underline border-transparent text-${color}-500 bg-${color}-50 disabled:bg-${color}-50 hover:bg-${color}-100 active:bg-${color}-200`,
       group && `not-last-child:(border-${group.vertical ? 'b' : 'r'}-${color}-100)`,
     ],
     subtle: [
-      `border-transparent text-${color}-700`,
-      active ? `bg-${color}-200` : ``,
-      !disabled && !active && `hover:bg-${color}-100 active:bg-${color}-200`,
+      `no-underline border-transparent text-${color}-500 bg-transparent disabled:bg-transparent hover:bg-${color}-100 active:bg-${color}-200`,
     ],
     link: [
-      `border-transparent underline underline-offset-2`,
-      active ? `text-${color}-900` : `text-${color}-600`,
-      !disabled && !active && ` hover:text-${color}-900 active:text-${color}-900`,
+      `border-transparent underline underline-offset-2 text-${color}-500 disabled:text-${color}-500 hover:text-${color}-600 active:text-${color}-700`,
     ],
   };
 };
 
-export const Button = (props: PolymorphicComponentProps<'button', ButtonProps>) => {
+const isButton = (element: { tagName: string; type?: string }) => {
+  const tagName = element.tagName.toLowerCase();
+
+  if (tagName === 'button') {
+    return true;
+  }
+
+  if (tagName === 'input' && element.type) {
+    return ['button', 'color', 'file', 'image', 'reset', 'submit'].indexOf(element.type) !== -1;
+  }
+
+  return false;
+};
+
+export const Button = createPolymorphicComponent<'button', ButtonProps>((props) => {
   const group = useButtonGroup();
 
   const defaultProps = {
     as: 'button',
+    type: 'button',
     size: group?.size || 'md',
     color: group?.color || 'blue',
     variant: group?.variant || 'solid',
@@ -102,16 +116,18 @@ export const Button = (props: PolymorphicComponentProps<'button', ButtonProps>) 
     disabled: group?.disabled || false,
     loading: false,
     fullWidth: false,
-    loaderPlacement: 'start',
+    spinnerPlacement: 'start',
   };
 
   const propsWithDefault = mergeProps(defaultProps, props);
 
   const [local, rest] = splitProps(propsWithDefault, [
     'as',
+    'ref',
     'type',
     'size',
     'color',
+    'radius',
     'variant',
     'disabled',
     'active',
@@ -120,50 +136,84 @@ export const Button = (props: PolymorphicComponentProps<'button', ButtonProps>) 
     'class',
     'loading',
     'loadingText',
-    'loader',
-    'loaderPlacement',
+    'spinner',
+    'spinnerPlacement',
   ]);
+
+  const rounded = () => (local.radius ? (isNumber(local.radius) ? `-[${local.radius}px]` : `-${local.radius}`) : '');
+
+  let ref: HTMLButtonElement | undefined;
+
+  const tagName = createTagName(
+    () => ref,
+    () => local.as || 'button'
+  );
+
+  const isNativeButton = createMemo(() => {
+    const elementTagName = tagName();
+
+    if (elementTagName == null) {
+      return false;
+    }
+
+    return isButton({ tagName: elementTagName, type: local.type });
+  });
+
+  const isNativeInput = createMemo(() => {
+    return tagName() === 'input';
+  });
+
+  const isNativeLink = createMemo(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return tagName() === 'a' && (rest as any).href != null;
+  });
 
   return (
     <Dynamic
       component={local.as}
-      type={local.type}
+      ref={mergeRefs((el) => (ref = el), local.ref)}
+      type={isNativeButton() || isNativeInput() ? local.type : undefined}
+      role={!isNativeButton() && !isNativeLink() ? 'button' : undefined}
       class={cx(
-        'inline-flex select-none appearance-none items-center justify-center whitespace-nowrap border align-middle duration-300 transition-colors',
+        'inline-flex items-center justify-center ',
+        'select-none appearance-none outline-none',
+        'whitespace-nowrap border transition-colors',
+        'disabled:(cursor-not-allowed opacity-50)',
+        `focus-visible:(ring ring-${local.color}-300)`,
         group
-          ? `first:(${group.vertical ? 'rounded-tl rounded-tr' : 'rounded-tl rounded-bl'}) last:(${
-              group.vertical ? 'rounded-bl rounded-br' : 'rounded-tr rounded-br'
+          ? `first:(${
+              group.vertical
+                ? `rounded-tl${rounded()} rounded-tr${rounded()}`
+                : `rounded-tl${rounded()} rounded-bl${rounded()}`
+            }) last:(${
+              group.vertical
+                ? `rounded-bl${rounded()} rounded-br${rounded()}`
+                : `rounded-tr${rounded()} rounded-br${rounded()}`
             })`
-          : 'rounded',
+          : `rounded${rounded()}`,
         local.fullWidth ? 'w-full' : 'w-auto',
-        (local.disabled || local.loading) && 'cursor-not-allowed opacity-60',
         buttonSizes[local.size],
-        buttonVariants(
-          local.color,
-          local.disabled || local.loading,
-          local.active,
-          group && { vertical: group.vertical || false }
-        )[local.variant],
+        buttonVariants(local.color, group && { vertical: group.vertical || false })[local.variant],
         local.class
       )}
       disabled={local.disabled || local.loading}
       {...rest}
     >
-      <Show when={local.loading && local.loaderPlacement == 'start'}>
-        <ButtonLoader size={local.size} label={local.loadingText} placement="start">
-          {local.loader}
-        </ButtonLoader>
+      <Show when={local.loading && local.spinnerPlacement == 'start'} keyed>
+        <ButtonSpinner size={local.size} label={local.loadingText} placement="start">
+          {local.spinner}
+        </ButtonSpinner>
       </Show>
-      <Show when={local.loading} fallback={local.children}>
-        <Show fallback={<span class={'opacity-0'}>{local.children}</span>} when={local.loadingText}>
+      <Show when={local.loading} fallback={local.children} keyed>
+        <Show fallback={<span class={'opacity-0'}>{local.children}</span>} when={local.loadingText} keyed>
           {local.loadingText}
         </Show>
       </Show>
-      <Show when={local.loading && local.loaderPlacement == 'end'}>
-        <ButtonLoader size={local.size} label={local.loadingText} placement="end">
-          {local.loader}
-        </ButtonLoader>
+      <Show when={local.loading && local.spinnerPlacement == 'end'} keyed>
+        <ButtonSpinner size={local.size} label={local.loadingText} placement="end">
+          {local.spinner}
+        </ButtonSpinner>
       </Show>
     </Dynamic>
   );
-};
+});

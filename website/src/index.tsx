@@ -1,24 +1,23 @@
 // @refresh reload
-import { ThemeProvider } from '@agile-solid/components';
 import { render } from 'solid-js/web';
-import { Router } from 'solid-app-router';
-import { install } from '@twind/core';
+import { Router } from '@solidjs/router';
 import { useRegisterSW } from 'virtual:pwa-register/solid';
 
 import App from './App';
-import twindConfig from './twind.config';
+import { setup } from './twind';
+import { AgileProvider } from '@agile-solid/components';
 
-install(twindConfig);
+setup();
 
 useRegisterSW();
 
 render(
   () => (
-    <ThemeProvider>
+    <AgileProvider>
       <Router>
         <App />
       </Router>
-    </ThemeProvider>
+    </AgileProvider>
   ),
   document.getElementById('app') as HTMLElement
 );

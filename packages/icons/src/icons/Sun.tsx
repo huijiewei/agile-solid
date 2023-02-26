@@ -1,5 +1,4 @@
 import { Icon, IconProps } from '../Icon';
-
 export const Sun = (props: IconProps) => {
   return (
     <Icon {...props}>

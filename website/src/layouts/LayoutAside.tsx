@@ -1,4 +1,4 @@
-import { NavLink } from 'solid-app-router';
+import { NavLink } from '@solidjs/router';
 import { For } from 'solid-js';
 import { cx } from '@twind/core';
 import { menus } from '../data/menus';
@@ -10,9 +10,9 @@ export const LayoutAside = () => {
     <aside
       role={showAside() ? 'dialog' : undefined}
       class={cx(
-        showAside() ? `w-full translate-x-0 bg-white dark:bg-slate-900` : 'translate-x-[-100%]',
+        showAside() ? `w-full translate-x-0 bg-white dark:bg-gray-900` : 'translate-x-[-100%]',
         'tablet:(translate-x-0 w-52) transition-transform duration-300',
-        'fixed bottom-0 top-16 z-30 border-r border-r-slate-200',
+        'fixed bottom-0 top-16 z-30 border-r border-r-gray-200',
         'overscroll-contain overflow-y-auto overflow-x-hidden',
         '&::-webkit-scrollbar:(w-[9px] h-[9px]) &::-webkit-scrollbar-thumb:(border-([3px] solid transparent) bg-clip-padding bg-gray-300 rounded-[5px])'
       )}
@@ -27,7 +27,7 @@ export const LayoutAside = () => {
                     <NavLink
                       onClick={() => setShowAside(false)}
                       activeClass={'text-blue-700'}
-                      inactiveClass={'hover:text-slate-500'}
+                      inactiveClass={'hover:text-gray-500'}
                       href={menu.path}
                     >
                       {menu.label}
@@ -37,14 +37,14 @@ export const LayoutAside = () => {
                   )}
                 </h5>
                 {menu.children && (
-                  <ul class={'space-y-2.5 border-l border-l-slate-200'}>
+                  <ul class={'space-y-2.5 border-l border-l-gray-200'}>
                     <For each={menu.children} fallback={<div>Loading...</div>}>
                       {(child) => (
                         <li>
                           <NavLink
                             onClick={() => setShowAside(false)}
                             activeClass={'border-l-blue-600 text-blue-700'}
-                            inactiveClass={'text-slate-500 hover:border-l-slate-600 hover:text-slate-700'}
+                            inactiveClass={'text-gray-500 hover:border-l-gray-600 hover:text-gray-700'}
                             class={'-ml-px block border-l border-transparent pl-4 font-medium'}
                             href={child.path}
                           >

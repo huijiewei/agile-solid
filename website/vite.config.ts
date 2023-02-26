@@ -1,13 +1,13 @@
 import mdxPlugin from '@mdx-js/rollup';
-import { resolve } from 'path';
 import rehypeSlug from 'rehype-slug';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
 import remarkMdxCodeMeta from 'remark-mdx-code-meta';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
-import { defineConfig, splitVendorChunkPlugin } from 'vite';
+import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import solidPlugin from 'vite-plugin-solid';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
   plugins: [
@@ -17,7 +17,6 @@ export default defineConfig({
       rehypePlugins: [rehypeSlug],
     }),
     solidPlugin(),
-    splitVendorChunkPlugin(),
     VitePWA({
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'safari-pinned-tab.svg'],
       registerType: 'autoUpdate',
@@ -38,13 +37,14 @@ export default defineConfig({
         display: 'standalone',
       },
     }),
+    tsconfigPaths(),
   ],
   build: {
-    target: 'esnext',
+    minify: 'terser',
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          if (id.includes('node_modules/solid-js') || id.includes('node_modules/solid-app-router')) {
+          if (id.includes('node_modules/solid-js') || id.includes('node_modules/@solid-js')) {
             return 'solid';
           }
 
@@ -65,16 +65,6 @@ export default defineConfig({
           }
         },
       },
-    },
-  },
-  resolve: {
-    alias: {
-      '@agile-solid/components': resolve(__dirname, '../packages/components/src'),
-      '@agile-solid/hooks': resolve(__dirname, '../packages/hooks/src'),
-      '@agile-solid/twind': resolve(__dirname, '../packages/twind/src'),
-      '@agile-solid/icons': resolve(__dirname, '../packages/icons/src'),
-      '@agile-solid/utils': resolve(__dirname, '../packages/utils/src'),
-      '@agile-solid/live': resolve(__dirname, '../packages/live/src'),
     },
   },
 });

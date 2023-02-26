@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+.solid
+*.local
+
+.idea
+.vscode
+.eslintcache
+website/.env.production

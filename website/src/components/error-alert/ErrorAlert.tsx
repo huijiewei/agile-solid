@@ -1,5 +1,5 @@
 import { Button } from '@agile-solid/components';
-import { useNavigate } from 'solid-app-router';
+import { useNavigate } from '@solidjs/router';
 import type { JSX } from 'solid-js';
 
 type ErrorProps = {

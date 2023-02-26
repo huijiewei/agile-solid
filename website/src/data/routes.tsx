@@ -1,4 +1,4 @@
-import { Navigate } from 'solid-app-router';
+import { Navigate } from '@solidjs/router';
 import { DefaultLayout } from '../layouts/DefaultLayout';
 import View from '../views/components/View';
 import Home from '../views/site/Home';

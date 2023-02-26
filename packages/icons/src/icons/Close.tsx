@@ -1,5 +1,4 @@
 import { type IconProps, Icon } from '../Icon';
-
 export const Close = (props: IconProps) => {
   return (
     <Icon {...props}>

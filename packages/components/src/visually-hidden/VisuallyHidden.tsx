@@ -1,12 +1,5 @@
-import { splitProps } from 'solid-js';
-import type { JSX } from 'solid-js';
+import type { ComponentProps } from 'solid-js';
 
-export const VisuallyHidden = (props: JSX.HTMLAttributes<HTMLSpanElement>) => {
-  const [local, rest] = splitProps(props, ['children']);
-
-  return (
-    <span {...rest} class={'sr-only'}>
-      {local.children}
-    </span>
-  );
+export const VisuallyHidden = (props: ComponentProps<'span'>) => {
+  return <span {...props} class={'sr-only'} />;
 };

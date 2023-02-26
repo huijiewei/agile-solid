@@ -1,7 +1,7 @@
 import { Edit, Github } from '@agile-solid/icons';
 import { kebabCase, pascalCase } from '@agile-solid/utils';
 import type { MDXContent } from 'mdx/types';
-import { useParams } from 'solid-app-router';
+import { useParams } from '@solidjs/router';
 import { createComponent, createEffect, createSignal, onCleanup, Show } from 'solid-js';
 import { createStore } from 'solid-js/store';
 import { cx } from '@twind/core';
@@ -57,8 +57,9 @@ const View = () => {
           <img class={'w-[320px] aspect-[3/2] items-center'} src={Image500} alt={`组件文档不存在`} />
         </ErrorAlert>
       }
+      keyed
     >
-      <Show when={!!mdx.default} fallback={<LazyLoading class={'h-96'} />}>
+      <Show when={!!mdx.default} fallback={<LazyLoading class={'h-96'} />} keyed>
         <article
           class={cx(
             'flex flex-col gap-5',

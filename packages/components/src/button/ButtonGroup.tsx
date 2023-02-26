@@ -1,7 +1,8 @@
-import { createContext, mergeProps, splitProps, useContext } from 'solid-js';
-import { cx } from '@twind/core';
-import type { PrimitiveComponentProps } from '../utils/component';
 import type { ScaleColor, Size } from '../utils/types';
+import { createContext, mergeProps, splitProps, useContext } from 'solid-js';
+import type { PrimitiveComponentProps } from '../utils/component';
+import { cx } from '@twind/core';
+import { createStore } from 'solid-js/store';
 
 export type ButtonBaseProps = {
   /**
@@ -49,13 +50,24 @@ export const ButtonGroup = (props: PrimitiveComponentProps<'div', ButtonGroupPro
 
   const [local, rest] = splitProps(propsWithDefault, ['size', 'color', 'variant', 'vertical', 'children', 'class']);
 
+  const [state] = createStore<ButtonGroupProps>({
+    get size() {
+      return local.size;
+    },
+    get color() {
+      return local.color;
+    },
+    get variant() {
+      return local.variant;
+    },
+    get vertical() {
+      return local.vertical;
+    },
+  });
+
   return (
     <div role={'group'} class={cx('inline-flex', local.vertical ? 'flex-col' : 'flex-row', local.class)} {...rest}>
-      <ButtonGroupContext.Provider
-        value={{ size: local.size, color: local.color, variant: local.variant, vertical: local.vertical }}
-      >
-        {local.children}
-      </ButtonGroupContext.Provider>
+      <ButtonGroupContext.Provider value={state}>{local.children}</ButtonGroupContext.Provider>
     </div>
   );
 };

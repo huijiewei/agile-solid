@@ -5,35 +5,41 @@
   "sideEffects": false,
   "type": "module",
   "publishConfig": {
-    "access": "public",
-    "directory": "dist"
+    "access": "public"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "dts": "tsc src/index.ts --declaration --emitDeclarationOnly --jsx preserve --jsxImportSource solid-js --skipLibCheck --target esnext --moduleResolution node --outDir dist",
-    "build": "vite build && npm run dts"
+    "build": "tsup",
+    "prepublishOnly": "npm run build"
   },
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js"
-    }
+    "solid": "./dist/index.jsx",
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "require": "./dist/index.cjs"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huijiewei/agile-solid.git",
     "directory": "packages/live"
   },
-  "peerDependencies": {
-    "solid-js": ">=1"
-  },
   "dependencies": {
     "@agile-solid/utils": "*",
     "sucrase": "^3.29.0"
   },
   "devDependencies": {
-    "solid-js": "^1.6.4"
-  }
+    "solid-js": "^1.6.11"
+  },
+  "peerDependencies": {
+    "solid-js": ">=1"
+  },
+  "browser": {},
+  "typesVersions": {}
 }
